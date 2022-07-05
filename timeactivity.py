@@ -1,10 +1,11 @@
+from doctest import master
 import tkinter as tk
 from xml.dom.minicompat import StringTypes
 from PIL import Image, ImageTk
 from tkcalendar import DateEntry
 from tkinter import StringVar, ttk
 import mysql.connector
-mydata=mysql.connector.connect(host='localhost', user='root', password='', database='finsys_tkinter')
+mydata=mysql.connector.connect(host='localhost', user='root', password='', database='finsys_tkinterr')
 cur=mydata.cursor()
 #sherryag
 def time():
@@ -19,9 +20,10 @@ def time():
         endtime=eh.get()+':'+em.get()
         ttime=timeh.get()+':'+timem.get()
         text=timetext.get("1.0","end")
-        tg='''INSERT INTO timeactivity (timdate,timname,timcus,timcheck,timebill,timecheckk,timestart,timeend,tyme,timedes) 
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
-        cur.execute(tg,[(date),(name),(cus),(checkbill),(bill),(timecheck),(starttime),(endtime),(ttime),(text)])
+        cid=2
+        tg='''INSERT INTO timeactivity (timdate,timname,timcus,timcheck,timebill,timecheckk,timestart,timeend,tyme,timedes,cid) 
+        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
+        cur.execute(tg,[(date),(name),(cus),(checkbill),(bill),(timecheck),(starttime),(endtime),(ttime),(text),(cid)])
         #print(date,name,cus,checkbill,bill,timecheck,starttime,endtime,ttime,text)
         mydata.commit()
         win.destroy()
@@ -35,16 +37,18 @@ def time():
 
     f2=tk.Frame(win,bg='#243e54')
     size=(400,500)
-    ax=ImageTk.PhotoImage(Image.open('time.png').resize(size))
-    tk.Label(f2,image=ax,bg='#243e54').place(relx=0.05,rely=0.05,relheight=0.8,relwidth=0.2)
+    cv=Image.open('timeact.png').resize(size)
+    ax=ImageTk.PhotoImage(cv,master=win)
+    ay=tk.Label(f2,image=ax,bg='#243e54')
+    ay.place(relx=0.05,rely=0.05,relheight=0.8,relwidth=0.2)
 
     tk.Label(f2,text='Date',font=('times new roman', 14),bg='#2f516f').place(relx=0.3,rely=0.1)
     timedate=StringVar()
     DateEntry(f2,textvariable=timedate).place(relx=0.3,rely=0.16,relwidth=0.3,relheight=0.05)
 
     tk.Label(f2,text='Name',font=('times new roman', 14),bg='#2f516f').place(relx=0.65,rely=0.1)
-    timename=StringVar()
-    tk.Entry(f2,textvariable=timename).place(relx=0.65,rely=0.16,relwidth=0.3,relheight=0.05)
+    timename=tk.Entry(f2)
+    timename.place(relx=0.65,rely=0.16,relwidth=0.3,relheight=0.05)
 
     tk.Label(f2,text='Customer',font=('times new roman', 14),bg='#2f516f').place(relx=0.3,rely=0.25)   
     def comboinput():
@@ -52,6 +56,7 @@ def time():
         val=cur.fetchall()         
         for row in val:
             tm.append(row[0]+row[1])
+    #xxx        
     global tm  
     tm=['Select Customer']
     comboinput()     
@@ -59,30 +64,51 @@ def time():
     timecus.current(0)  
     timecus.place(relx=0.3,rely=0.31,relwidth=0.65,relheight=0.05)
     
+    timbill=tk.Entry(f2)
+    timbill.place(relx=0.58,rely=0.4,relwidth=0.18,relheight=0.05)
+
+    def billchkk(widget):
+        tim=timebill.get()
+        if tim=='No':
+            timbill['state']='disabled'
+        else:
+            timbill['state']='normal'    
     tk.Label(f2,text='Billable(/hr)',font=('times new roman', 12),bg='#2f516f').place(relx=0.3,rely=0.4)
     bl=['Yes','No']
     timebill=ttk.Combobox(f2,values=bl)
+    timebill.bind('<FocusOut>',billchkk)
     timebill.place(relx=0.38,rely=0.4,relwidth=0.18,relheight=0.05)
-    print(timebill.get())
-
-    timbill=StringVar()
-    tk.Entry(f2,textvariable=timbill).place(relx=0.58,rely=0.4,relwidth=0.18,relheight=0.05)
-
-    tk.Label(f2,text='Enter start and end time',font=('times new roman', 12),bg='#2f516f').place(relx=0.3,rely=0.5)
-    time=ttk.Combobox(f2,values=bl)
-    time.place(relx=0.43,rely=0.5,relwidth=0.05,relheight=0.05)
 
     tk.Label(f2,text='Start time',font=('times new roman', 12),bg='#2f516f').place(relx=0.55,rely=0.5)
     hr=StringVar()
-    min_sb = tk.Spinbox(f2,from_=0,to=23,wrap=True,state="readonly",textvariable=hr).place(relx=0.61,rely=0.5,relwidth=0.05,relheight=0.05)
+    min_sb = tk.Spinbox(f2,from_=0,to=23,wrap=True,state="readonly",textvariable=hr)
+    min_sb.place(relx=0.61,rely=0.5,relwidth=0.05,relheight=0.05)
     min=StringVar()
-    sec_sb = tk.Spinbox(f2,from_=0,to=59,wrap=True,state="readonly",textvariable=min).place(relx=0.66,rely=0.5,relwidth=0.05,relheight=0.05)
+    sec_sb = tk.Spinbox(f2,from_=0,to=59,wrap=True,state="readonly",textvariable=min)
+    sec_sb.place(relx=0.66,rely=0.5,relwidth=0.05,relheight=0.05)
 
     tk.Label(f2,text='Endtime',font=('times new roman', 12),bg='#2f516f').place(relx=0.72,rely=0.5)
     eh=StringVar()
     em=StringVar()
-    emin_sb = tk.Spinbox(f2,from_=0,to=23,wrap=True,state="readonly",textvariable=eh).place(relx=0.77,rely=0.5,relwidth=0.05,relheight=0.05)
-    esec_sb = tk.Spinbox(f2,from_=0,to=59,wrap=True,state="readonly",textvariable=em).place(relx=0.82,rely=0.5,relwidth=0.05,relheight=0.05)
+    emin_sb = tk.Spinbox(f2,from_=0,to=23,wrap=True,state="readonly",textvariable=eh)
+    emin_sb.place(relx=0.77,rely=0.5,relwidth=0.05,relheight=0.05)
+    esec_sb = tk.Spinbox(f2,from_=0,to=59,wrap=True,state="readonly",textvariable=em)
+    esec_sb.place(relx=0.82,rely=0.5,relwidth=0.05,relheight=0.05)
+
+    def billchktime(widget):
+        tim=time.get()
+        if tim=='No':
+            min_sb['state']='disabled'
+            sec_sb['state']='disabled'
+            emin_sb['state']='disabled'
+            esec_sb['state']='disabled'
+        else:
+            timbill['state']='normal'    
+
+    tk.Label(f2,text='Enter start and end time',font=('times new roman', 12),bg='#2f516f').place(relx=0.3,rely=0.5)
+    time=ttk.Combobox(f2,values=bl)
+    time.bind('<FocusOut>',billchktime)
+    time.place(relx=0.43,rely=0.5,relwidth=0.05,relheight=0.05)
 
     tk.Label(f2,text='Time',font=('times new roman', 14),bg='#2f516f').place(relx=0.3,rely=0.58)
     timeh=StringVar()
@@ -97,4 +123,4 @@ def time():
     tk.Button(f2,text='Submit Form',font=('times new roman', 16),bg='#2f516f',command=getdetails).place(relx=0.45,rely=0.92,relwidth=0.2,relheight=0.05)
     f2.place(relx=0.1,rely=0.2,relwidth=0.8,relheight=0.7)
     win.mainloop()
-time()    
+time()   
