@@ -18,12 +18,11 @@ def fun():#db connection
         host='localhost',
         user='root',
         password='',
-        database='finsYs_tkinter'
+        database='finsys_tkinter1'
         )
     mycursor = mydb1.cursor()
-
-def add_custom():
-    import addcustomer_form
+#def add_custom():
+    #import addcustomer_form
 
 
 
@@ -43,7 +42,7 @@ def edit_sale():
         quantity=qty_input1.get()
         selected_product.append(product)
         # for product in sal_data:
-        #     product_details="SELECT * FROM app1_salesrecpts WHERE name=%s"
+        #     product_details="SELECT * FROM salesrecpts WHERE name=%s"
         #     mycursor.execute(product_details,selected_product)
         #     data=mycursor.fetchall()
         #     for i in data:
@@ -54,7 +53,7 @@ def edit_sale():
         #         tota_price=int(e_sale_price)*int(quantity)
         #         e_total.set(tota_price)
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -65,7 +64,7 @@ def edit_sale():
                 tota_price=int(e_sale_price)*int(quantity)
                 e_total.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -77,7 +76,7 @@ def edit_sale():
                 e_total.set(tota_price) 
         
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -139,7 +138,7 @@ def edit_sale():
         selected_product.append(product)
         quantity2=qty_input2.get()
         # for product in sal_data:
-        #     product_details="SELECT * FROM app1_salesrecpts WHERE name=%s"
+        #     product_details="SELECT * FROM salesrecpts WHERE name=%s"
         #     mycursor.execute(product_details,selected_product)
         #     data=mycursor.fetchall()
         #     for i in data:
@@ -150,7 +149,7 @@ def edit_sale():
         #         tota_price=int(e_sale_price)*int(quantity2)
         #         e_total.set(tota_price)
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -161,7 +160,7 @@ def edit_sale():
                 tota_price=int(e_sale_price)*int(quantity2)
                 e_total2.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -172,7 +171,7 @@ def edit_sale():
                 tota_price=int(e_sale_price)*int(quantity2)
                 e_total2.set(tota_price)
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -236,7 +235,7 @@ def edit_sale():
         selected_product.append(product)
         quantity3=qty_input3.get()
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -247,7 +246,7 @@ def edit_sale():
                 tota_price=int(e_sale_price)*int(quantity3)
                 e_total3.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -258,7 +257,7 @@ def edit_sale():
                 tota_price=int(e_sale_price)*int(quantity3)
                 e_total3.set(tota_price)
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -320,7 +319,7 @@ def edit_sale():
         selected_product.append(product)
         quantity4=qty_input4.get()
         # for product in sal_data:
-        #     product_details="SELECT * FROM app1_salesrecpts WHERE name=%s"
+        #     product_details="SELECT * FROM salesrecpts WHERE name=%s"
         #     mycursor.execute(product_details,selected_product)
         #     data=mycursor.fetchall()
         #     for i in data:
@@ -331,7 +330,7 @@ def edit_sale():
         #         tota_price=int(e_sale_price)*int(quantity4)
         #         e_total.set(tota_price)
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -342,7 +341,7 @@ def edit_sale():
                 tota_price=int(e_sale_price)*int(quantity4)
                 e_total4.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -353,7 +352,7 @@ def edit_sale():
                 tota_price=int(e_sale_price)*int(quantity4)
                 e_total4.set(tota_price)
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -459,7 +458,7 @@ def edit_sale():
         taxamount=e_taxamount.get()
         # balance=e_balance.get()
         cid_id=cmp1[0]
-        mycursor.execute("UPDATE app1_salesrecpts SET salename =%s, saleemail =%s, saleaddress =%s, saledate =%s, saleno =%s, salesplace =%s, salepay =%s, salerefno =%s,saledeposit =%s, salepro =%s, salehsn =%s, saledescription =%s, saleqty =%s,saleprice =%s, saaletotal =%s, tax =%s, salesubtotal=%s, salegrandtotal =%s, category2 =%s, categoryhsn2 =%s, descrptin2 =%s, catqty2 =%s, catprice2 =%s, cattotal2 =%s, tax1 =%s, category3 =%s, categoryhsn3 =%s, descrptin3 =%s, catqty3 =%s, catprice3 =%s, cattotal3 =%s, tax2 =%s, category4 =%s, categoryhsn4 =%s, descrptin4 =%s, catqty4 =%s, catprice4 =%s, cattotal4 =%s, tax3 =%s, saletaxamount =%s, cid_id =%s WHERE salesrecptsid=%s"
+        mycursor.execute("UPDATE salesrecpts SET salename =%s, saleemail =%s, saleaddress =%s, saledate =%s, saleno =%s, salesplace =%s, salepay =%s, salerefno =%s,saledeposit =%s, salepro =%s, salehsn =%s, saledescription =%s, saleqty =%s,saleprice =%s, saaletotal =%s, tax =%s, salesubtotal=%s, salegrandtotal =%s, category2 =%s, categoryhsn2 =%s, descrptin2 =%s, catqty2 =%s, catprice2 =%s, cattotal2 =%s, tax1 =%s, category3 =%s, categoryhsn3 =%s, descrptin3 =%s, catqty3 =%s, catprice3 =%s, cattotal3 =%s, tax2 =%s, category4 =%s, categoryhsn4 =%s, descrptin4 =%s, catqty4 =%s, catprice4 =%s, cattotal4 =%s, tax3 =%s, saletaxamount =%s, cid_id =%s WHERE salesrecptsid=%s"
         ,(custom,emal,amount,date,salerecno,place,paymethod,refno,deposit,product,hsn,desc,qty,price,total,tax,subtotal,grand,product2,hsn2,desc2,qty2,price2,total2,tax2,product3,hsn3,desc3,qty3,price3,total3,tax3,product4,hsn4,desc4,qty4,price4,total4,tax4,taxamount,cid_id,data[0]))
         mydb1.commit()
         mydb1.close()
@@ -472,7 +471,7 @@ def edit_sale():
     focus_data = tree_data.focus()
     values=tree_data.item(focus_data,'values')
     salesrecpts_id=[values[-1]]
-    mycursor.execute("SELECT * FROM app1_salesrecpts WHERE salesrecptsid=%s",(salesrecpts_id))
+    mycursor.execute("SELECT * FROM salesrecpts WHERE salesrecptsid=%s",(salesrecpts_id))
     data=mycursor.fetchone()
     
     
@@ -1068,20 +1067,16 @@ def get_selected_producting(event):
         import invoice
     if pr1 == "Payment":
         import payment
-    if pr1 == "Sales":
-        import sales
-    if pr1 == "Receipt":
-        import receipt
+    if pr1 == "Sales Receipt":
+        import Salesreceipt
     if pr1 == "Credit note":
         import creditnote
     if pr1 == "Estimate":
         import estimate
     if pr1 == "Delayed Charge":
         import delayedcharge
-    if pr1 == "Estimate":
-        import estimate
     if pr1 == "Time Activity":
-        import timeactivity
+        import salestimactivity
     
 root = tk.Tk()
 fun()
@@ -1162,7 +1157,7 @@ tree_data.heading("7", text="TOTAL BEFORE")
 tree_data.heading("8", text="TAX")
 tree_data.heading("9", text="TOTAL")
 
-sql = 'SELECT saledate,salepay,saleno,salename,saledate,saaletotal,salesubtotal,saletaxamount,salegrandtotal,salesrecptsid from app1_salesrecpts'
+sql = 'SELECT saledate,salepay,saleno,salename,saledate,saaletotal,salesubtotal,saletaxamount,salegrandtotal,salesrecptsid from salesrecpts'
 mycursor.execute(sql)
 trees_data=mycursor.fetchall()
 total=mycursor.rowcount
