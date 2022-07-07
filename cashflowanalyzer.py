@@ -341,473 +341,317 @@ mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymm
 tab149 = mycursor.fetchall()
 mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Swachh Bharat Cess Expense')",([full_month_name]))
 tab150 = mycursor.fetchall()
-jan25="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Taxes - Property')"
-mycursor.execute(jan25)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Taxes - Property')",([month_name4]))
 tab151 = mycursor.fetchall()
-feb25="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Taxes - Property')"
-mycursor.execute(feb25)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Taxes - Property')",([month_name3]))
 tab152 = mycursor.fetchall()
-mar25="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Taxes - Property')"
-mycursor.execute(mar25)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Taxes - Property')",([month_name2]))
 tab153 = mycursor.fetchall()
-apr25="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Taxes - Property')"
-mycursor.execute(apr25)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Taxes - Property')",([month_name1]))
 tab154 = mycursor.fetchall()
-may25="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Taxes - Property')"
-mycursor.execute(may25)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Taxes - Property')",([month_name]))
 tab155 = mycursor.fetchall()
-jun25="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Taxes - Property')"
-mycursor.execute(jun25)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Taxes - Property')",([full_month_name]))
 tab156 = mycursor.fetchall()
-jan26="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Telephone Expense')"
-mycursor.execute(jan26)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Telephone Expense')",([month_name4]))
 tab157 = mycursor.fetchall()
-feb26="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Telephone Expense')"
-mycursor.execute(feb26)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Telephone Expense')",([month_name3]))
 tab158 = mycursor.fetchall()
-mar26="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Telephone Expense')"
-mycursor.execute(mar26)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Telephone Expense')",([month_name2]))
 tab159 = mycursor.fetchall()
-apr26="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Telephone Expense')"
-mycursor.execute(apr26)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Telephone Expense')",([month_name1]))
 tab160 = mycursor.fetchall()
-may26="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Telephone Expense')"
-mycursor.execute(may26)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Telephone Expense')",([month_name]))
 tab161 = mycursor.fetchall()
-jun26="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Telephone Expense')"
-mycursor.execute(jun26)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Telephone Expense')",([full_month_name]))
 tab162 = mycursor.fetchall()
-jan27="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Travel Expense')"
-mycursor.execute(jan27)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Travel Expense')",([month_name4]))
 tab163 = mycursor.fetchall()
-feb27="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Travel Expense')"
-mycursor.execute(feb27)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Travel Expense')",([month_name3]))
 tab164 = mycursor.fetchall()
-mar27="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Travel Expense')"
-mycursor.execute(mar27)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Travel Expense')",([month_name2]))
 tab165 = mycursor.fetchall()
-apr27="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Travel Expense')"
-mycursor.execute(apr27)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Travel Expense')",([month_name1]))
 tab166 = mycursor.fetchall()
-may27="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Travel Expense')"
-mycursor.execute(may27)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Travel Expense')",([month_name]))
 tab167 = mycursor.fetchall()
-jun27="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Travel Expense')"
-mycursor.execute(jun27)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Travel Expense')",([full_month_name]))
 tab168 = mycursor.fetchall()
-jan28="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Uncategorised Expense')"
-mycursor.execute(jan28)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Expense')",([month_name4]))
 tab169 = mycursor.fetchall()
-feb28="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Uncategorised Expense')"
-mycursor.execute(feb28)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Expense')",([month_name3]))
 tab170 = mycursor.fetchall()
-mar28="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Uncategorised Expense')"
-mycursor.execute(mar28)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Expense')",([month_name2]))
 tab171 = mycursor.fetchall()
-apr28="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Uncategorised Expense')"
-mycursor.execute(apr28)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Expense')",([month_name1]))
 tab172 = mycursor.fetchall()
-may28="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Uncategorised Expense')"
-mycursor.execute(may28)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Expense')",([month_name]))
 tab173 = mycursor.fetchall()
-jun28="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Uncategorised Expense')"
-mycursor.execute(jun28)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Expense')",([full_month_name]))
 tab174 = mycursor.fetchall()
-jan29="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Utilities')"
-mycursor.execute(jan29)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Utilities')",([month_name4]))
 tab175 = mycursor.fetchall()
-feb29="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Utilities')"
-mycursor.execute(feb29)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Utilities')",([month_name3]))
 tab176 = mycursor.fetchall()
-mar29="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Utilities')"
-mycursor.execute(mar29)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Utilities')",([month_name2]))
 tab177 = mycursor.fetchall()
-apr29="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Utilities')"
-mycursor.execute(apr29)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Utilities')",([month_name1]))
 tab178 = mycursor.fetchall()
-may29="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Utilities')"
-mycursor.execute(may29)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Utilities')",([month_name]))
 tab179 = mycursor.fetchall()
-jun29="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Utilities')"
-mycursor.execute(jun29)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Utilities')",([full_month_name]))
 tab180= mycursor.fetchall()
-jan30="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Cash and cash equivalents')"
-mycursor.execute(jan30)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Cash and cash equivalents')",([month_name4]))
 tab181 = mycursor.fetchall()
-feb30="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Cash and cash equivalents')"
-mycursor.execute(feb30)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Cash and cash equivalents')",([month_name3]))
 tab182 = mycursor.fetchall()
-mar30="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Cash and cash equivalents')"
-mycursor.execute(mar30)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Cash and cash equivalents')",([month_name2]))
 tab183 = mycursor.fetchall()
-apr30="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Cash and cash equivalents')"
-mycursor.execute(apr30)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Cash and cash equivalents')",([month_name1]))
 tab184 = mycursor.fetchall()
-may30="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Cash and cash equivalents')"
-mycursor.execute(may30)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Cash and cash equivalents')",([month_name]))
 tab185 = mycursor.fetchall()
-jun30="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Cash and cash equivalents')"
-mycursor.execute(jun30)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Cash and cash equivalents')",([full_month_name]))
 tab186 = mycursor.fetchall()
-jan31="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Accounts Receivable (Debtors)')"
-mycursor.execute(jan31)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accounts Receivable (Debtors)')",([month_name4]))
 tab187 = mycursor.fetchall()
-feb31="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Accounts Receivable (Debtors)')"
-mycursor.execute(feb31)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accounts Receivable (Debtors)')",([month_name3]))
 tab188 = mycursor.fetchall()
-mar31="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Accounts Receivable (Debtors)')"
-mycursor.execute(mar31)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accounts Receivable (Debtors)')",([month_name2]))
 tab189 = mycursor.fetchall()
-apr31="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Accounts Receivable (Debtors)')"
-mycursor.execute(apr31)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accounts Receivable (Debtors)')",([month_name1]))
 tab190 = mycursor.fetchall()
-may31="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Accounts Receivable (Debtors)')"
-mycursor.execute(may31)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accounts Receivable (Debtors)')",([month_name]))
 tab191 = mycursor.fetchall()
-jun31="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Accounts Receivable (Debtors)')"
-mycursor.execute(jun31)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accounts Receivable (Debtors)')",([full_month_name]))
 tab192= mycursor.fetchall()
-jan32="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Deferred CGST')"
-mycursor.execute(jan32)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred CGST')",([month_name4]))
 tab193 = mycursor.fetchall()
-feb32="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Deferred CGST')"
-mycursor.execute(feb32)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred CGST')",([month_name3]))
 tab194 = mycursor.fetchall()
-mar32="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Deferred CGST')"
-mycursor.execute(mar32)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred CGST')",([month_name2]))
 tab195 = mycursor.fetchall()
-apr32="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Deferred CGST')"
-mycursor.execute(apr32)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred CGST')",([month_name1]))
 tab196 = mycursor.fetchall()
-may32="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Deferred CGST')"
-mycursor.execute(may32)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred CGST')",([month_name]))
 tab197= mycursor.fetchall()
-jun32="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Deferred CGST')"
-mycursor.execute(jun32)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred CGST')",([full_month_name]))
 tab198= mycursor.fetchall()
-jan33="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Deferred GST Input Credit')"
-mycursor.execute(jan33)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred GST Input Credit')",([month_name4]))
 tab199 = mycursor.fetchall()
-feb33="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Deferred GST Input Credit')"
-mycursor.execute(feb33)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred GST Input Credit')",([month_name3]))
 tab200 = mycursor.fetchall()
-mar33="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Deferred GST Input Credit')"
-mycursor.execute(mar33)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred GST Input Credit')",([month_name2]))
 tab201 = mycursor.fetchall()
-apr33="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Deferred GST Input Credit')"
-mycursor.execute(apr33)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred GST Input Credit')",([month_name1]))
 tab202 = mycursor.fetchall()
-may33="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Deferred GST Input Credit')"
-mycursor.execute(may33)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred GST Input Credit')",([month_name]))
 tab203= mycursor.fetchall()
-jun33="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Deferred GST Input Credit')"
-mycursor.execute(jun33)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred GST Input Credit')",([full_month_name]))
 tab204= mycursor.fetchall()
-jan34="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Deferred IGST')"
-mycursor.execute(jan34)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred IGST')",([month_name4]))
 tab205 = mycursor.fetchall()
-feb34="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Deferred IGST')"
-mycursor.execute(feb34)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred IGST')",([month_name3]))
 tab206 = mycursor.fetchall()
-mar34="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Deferred IGST')"
-mycursor.execute(mar34)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred IGST')",([month_name2]))
 tab207 = mycursor.fetchall()
-apr34="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Deferred IGST')"
-mycursor.execute(apr34)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred IGST')",([month_name1]))
 tab208 = mycursor.fetchall()
-may34="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Deferred IGST')"
-mycursor.execute(may34)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred IGST')",([month_name]))
 tab209= mycursor.fetchall()
-jun34="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Deferred IGST')"
-mycursor.execute(jun34)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred IGST')",([full_month_name]))
 tab210= mycursor.fetchall()
-jan35="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Deferred Krishi Kalyan Cess Input Credit')"
-mycursor.execute(jan35)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Krishi Kalyan Cess Input Credit')",([month_name4]))
 tab211 = mycursor.fetchall()
-feb35="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Deferred Krishi Kalyan Cess Input Credit')"
-mycursor.execute(feb35)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Krishi Kalyan Cess Input Credit')",([month_name3]))
 tab212 = mycursor.fetchall()
-mar35="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Deferred Krishi Kalyan Cess Input Credit')"
-mycursor.execute(mar35)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Krishi Kalyan Cess Input Credit')",([month_name2]))
 tab213 = mycursor.fetchall()
-apr35="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Deferred Krishi Kalyan Cess Input Credit')"
-mycursor.execute(apr35)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Krishi Kalyan Cess Input Credit')",([month_name1]))
 tab214 = mycursor.fetchall()
-may35="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Deferred Krishi Kalyan Cess Input Credit')"
-mycursor.execute(may35)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Krishi Kalyan Cess Input Credit')",([month_name]))
 tab215= mycursor.fetchall()
-jun35="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Deferred Krishi Kalyan Cess Input Credit')"
-mycursor.execute(jun35)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Krishi Kalyan Cess Input Credit')",([full_month_name]))
 tab216= mycursor.fetchall()
-jan36="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Deferred Service Tax Input Credit')"
-mycursor.execute(jan36)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Service Tax Input Credit')",([month_name4]))
 tab217 = mycursor.fetchall()
-feb36="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Deferred Service Tax Input Credit')"
-mycursor.execute(feb36)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Service Tax Input Credit')",([month_name3]))
 tab218 = mycursor.fetchall()
-mar36="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Deferred Service Tax Input Credit')"
-mycursor.execute(mar36)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Service Tax Input Credit')",([month_name2]))
 tab219 = mycursor.fetchall()
-apr36="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Deferred Service Tax Input Credit')"
-mycursor.execute(apr36)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Service Tax Input Credit')",([month_name1]))
 tab220 = mycursor.fetchall()
-may36="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Deferred Service Tax Input Credit')"
-mycursor.execute(may36)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Service Tax Input Credit')",([month_name]))
 tab221= mycursor.fetchall()
-jun36="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Deferred Service Tax Input Credit')"
-mycursor.execute(jun36)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred Service Tax Input Credit')",([full_month_name]))
 tab222= mycursor.fetchall()
-jan37="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Deferred SGST')"
-mycursor.execute(jan37)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred SGST')",([month_name4]))
 tab223 = mycursor.fetchall()
-feb37="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Deferred SGST')"
-mycursor.execute(feb37)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred SGST')",([month_name3]))
 tab224 = mycursor.fetchall()
-mar37="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Deferred SGST')"
-mycursor.execute(mar37)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred SGST')",([month_name2]))
 tab225 = mycursor.fetchall()
-apr37="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Deferred SGST')"
-mycursor.execute(apr37)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred SGST')",([month_name1]))
 tab226 = mycursor.fetchall()
-may37="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Deferred SGST')"
-mycursor.execute(may37)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred SGST')",([month_name]))
 tab227= mycursor.fetchall()
-jun37="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Deferred SGST')"
-mycursor.execute(jun37)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred SGST')",([full_month_name]))
 tab228= mycursor.fetchall()
-jan38="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Deferred VAT Input Credit')"
-mycursor.execute(jan38)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred VAT Input Credit')",([month_name4]))
 tab229 = mycursor.fetchall()
-feb38="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Deferred VAT Input Credit')"
-mycursor.execute(feb38)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred VAT Input Credit')",([month_name3]))
 tab230 = mycursor.fetchall()
-mar38="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Deferred VAT Input Credit')"
-mycursor.execute(mar38)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred VAT Input Credit')",([month_name2]))
 tab231 = mycursor.fetchall()
-apr38="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Deferred VAT Input Credit')"
-mycursor.execute(apr38)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred VAT Input Credit')",([month_name1]))
 tab232 = mycursor.fetchall()
-may38="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Deferred VAT Input Credit')"
-mycursor.execute(may38)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred VAT Input Credit')",([month_name]))
 tab233= mycursor.fetchall()
-jun38="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Deferred VAT Input Credit')"
-mycursor.execute(jun38)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Deferred VAT Input Credit')",([full_month_name]))
 tab234= mycursor.fetchall()
-jan39="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='GST Refund')"
-mycursor.execute(jan39)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='GST Refund')",([month_name4]))
 tab235 = mycursor.fetchall()
-feb39="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='GST Refund')"
-mycursor.execute(feb39)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='GST Refund')",([month_name3]))
 tab236 = mycursor.fetchall()
-mar39="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='GST Refund')"
-mycursor.execute(mar39)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='GST Refund')",([month_name2]))
 tab237 = mycursor.fetchall()
-apr39="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='GST Refund')"
-mycursor.execute(apr39)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='GST Refund')",([month_name1]))
 tab238 = mycursor.fetchall()
-may39="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='GST Refund')"
-mycursor.execute(may39)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='GST Refund')",([month_name]))
 tab239= mycursor.fetchall()
-jun39="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='GST Refund')"
-mycursor.execute(jun39)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='GST Refund')",([full_month_name]))
 tab240= mycursor.fetchall()
-jan40="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Inventory Asset')"
-mycursor.execute(jan40)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Inventory Asset')",([month_name4]))
 tab241 = mycursor.fetchall()
-feb40="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Inventory Asset')"
-mycursor.execute(feb40)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Inventory Asset')",([month_name3]))
 tab242 = mycursor.fetchall()
-mar40="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Inventory Asset')"
-mycursor.execute(mar40)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Inventory Asset')",([month_name2]))
 tab243 = mycursor.fetchall()
-apr40="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Inventory Asset')"
-mycursor.execute(apr40)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Inventory Asset')",([month_name1]))
 tab244 = mycursor.fetchall()
-may40="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Inventory Asset')"
-mycursor.execute(may40)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Inventory Asset')",([month_name]))
 tab245= mycursor.fetchall()
-jun40="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Inventory Asset')"
-mycursor.execute(jun40)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Inventory Asset')",([full_month_name]))
 tab246= mycursor.fetchall()
-jan41="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Krishi Kalyan Cess Refund')"
-mycursor.execute(jan41)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Krishi Kalyan Cess Refund')",([month_name4]))
 tab247 = mycursor.fetchall()
-feb41="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Krishi Kalyan Cess Refund')"
-mycursor.execute(feb41)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Krishi Kalyan Cess Refund')",([month_name3]))
 tab248 = mycursor.fetchall()
-mar41="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Krishi Kalyan Cess Refund')"
-mycursor.execute(mar41)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Krishi Kalyan Cess Refund')",([month_name2]))
 tab249 = mycursor.fetchall()
-apr41="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Krishi Kalyan Cess Refund')"
-mycursor.execute(apr41)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Krishi Kalyan Cess Refund')",([month_name1]))
 tab250 = mycursor.fetchall()
-may41="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Krishi Kalyan Cess Refund')"
-mycursor.execute(may41)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Krishi Kalyan Cess Refund')",([month_name]))
 tab251= mycursor.fetchall()
-jun41="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Krishi Kalyan Cess Refund')"
-mycursor.execute(jun41)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Krishi Kalyan Cess Refund')",([full_month_name]))
 tab252= mycursor.fetchall()
-jan42="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Prepaid Insurance')"
-mycursor.execute(jan42)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Prepaid Insurance')",([month_name4]))
 tab253 = mycursor.fetchall()
-feb42="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Prepaid Insurance')"
-mycursor.execute(feb42)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Prepaid Insurance')",([month_name3]))
 tab254 = mycursor.fetchall()
-mar42="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Prepaid Insurance')"
-mycursor.execute(mar42)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Prepaid Insurance')",([month_name2]))
 tab255 = mycursor.fetchall()
-apr42="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Prepaid Insurance')"
-mycursor.execute(apr42)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Prepaid Insurance')",([month_name1]))
 tab256 = mycursor.fetchall()
-may42="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Prepaid Insurance')"
-mycursor.execute(may42)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Prepaid Insurance')",([month_name]))
 tab257= mycursor.fetchall()
-jun42="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Prepaid Insurance')"
-mycursor.execute(jun42)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Prepaid Insurance')",([full_month_name]))
 tab258= mycursor.fetchall()
-jan43="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Service Tax Refund')"
-mycursor.execute(jan43)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Service Tax Refund')",([month_name4]))
 tab259 = mycursor.fetchall()
-feb43="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Service Tax Refund')"
-mycursor.execute(feb43)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Service Tax Refund')",([month_name3]))
 tab260 = mycursor.fetchall()
-mar43="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Service Tax Refund')"
-mycursor.execute(mar43)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Service Tax Refund')",([month_name2]))
 tab261 = mycursor.fetchall()
-apr43="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Service Tax Refund')"
-mycursor.execute(apr43)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Service Tax Refund')",([month_name1]))
 tab262= mycursor.fetchall()
-may43="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Service Tax Refund')"
-mycursor.execute(may43)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Service Tax Refund')",([month_name]))
 tab263= mycursor.fetchall()
-jun43="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Service Tax Refund')"
-mycursor.execute(jun43)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Service Tax Refund')",([full_month_name]))
 tab264= mycursor.fetchall()
-jan44="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='TDS Receivable')"
-mycursor.execute(jan44)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='TDS Receivable')",([month_name4]))
 tab266 = mycursor.fetchall()
-feb44="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='TDS Receivable')"
-mycursor.execute(feb44)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='TDS Receivable')",([month_name3]))
 tab267 = mycursor.fetchall()
-mar44="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='TDS Receivable')"
-mycursor.execute(mar44)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='TDS Receivable')",([month_name2]))
 tab268 = mycursor.fetchall()
-apr44="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='TDS Receivable')"
-mycursor.execute(apr44)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='TDS Receivable')",([month_name1]))
 tab269= mycursor.fetchall()
-may44="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='TDS Receivable')"
-mycursor.execute(may44)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='TDS Receivable')",([month_name]))
 tab270= mycursor.fetchall()
-jun44="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='TDS Receivable')"
-mycursor.execute(jun44)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='TDS Receivable')",([full_month_name]))
 tab271= mycursor.fetchall()
-jan45="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Uncategorised Asset')"
-mycursor.execute(jan45)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Asset')",([month_name4]))
 tab272 = mycursor.fetchall()
-feb45="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Uncategorised Asset')"
-mycursor.execute(feb45)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Asset')",([month_name3]))
 tab273 = mycursor.fetchall()
-mar45="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Uncategorised Asset')"
-mycursor.execute(mar45)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Asset')",([month_name2]))
 tab274 = mycursor.fetchall()
-apr45="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Uncategorised Asset')"
-mycursor.execute(apr45)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Asset')",([month_name1]))
 tab275= mycursor.fetchall()
-may45="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Uncategorised Asset')"
-mycursor.execute(may45)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Asset')",([month_name]))
 tab276= mycursor.fetchall()
-jun45="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Uncategorised Asset')"
-mycursor.execute(jun45)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Uncategorised Asset')",([full_month_name]))
 tab277= mycursor.fetchall()
-jan46="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Undeposited Funds')"
-mycursor.execute(jan46)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Undeposited Funds')",([month_name4]))
 tab278 = mycursor.fetchall()
-feb46="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Undeposited Funds')"
-mycursor.execute(feb46)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Undeposited Funds')",([month_name3]))
 tab279 = mycursor.fetchall()
-mar46="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Undeposited Funds')"
-mycursor.execute(mar46)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Undeposited Funds')",([month_name2]))
 tab280 = mycursor.fetchall()
-apr46="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Undeposited Funds')"
-mycursor.execute(apr46)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Undeposited Funds')",([month_name1]))
 tab281= mycursor.fetchall()
-may46="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Undeposited Funds')"
-mycursor.execute(may46)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Undeposited Funds')",([month_name]))
 tab282= mycursor.fetchall()
-jun46="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Undeposited Funds')"
-mycursor.execute(jun46)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Undeposited Funds')",([full_month_name]))
 tab283= mycursor.fetchall()
-jan47="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Accumulated Depreciation')"
-mycursor.execute(jan47)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accumulated Depreciation')",([month_name4]))
 tab284 = mycursor.fetchall()
-feb47="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Accumulated Depreciation')"
-mycursor.execute(feb47)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accumulated Depreciation')",([month_name3]))
 tab285 = mycursor.fetchall()
-mar47="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Accumulated Depreciation')"
-mycursor.execute(mar47)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accumulated Depreciation')",([month_name2]))
 tab286 = mycursor.fetchall()
-apr47="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Accumulated Depreciation')"
-mycursor.execute(apr47)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accumulated Depreciation')",([month_name1]))
 tab287= mycursor.fetchall()
-may47="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Accumulated Depreciation')"
-mycursor.execute(may47)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accumulated Depreciation')",([month_name]))
 tab288= mycursor.fetchall()
-jun47="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Accumulated Depreciation')"
-mycursor.execute(jun47)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Accumulated Depreciation')",([full_month_name]))
 tab289= mycursor.fetchall()
-jan48="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Buildings and Improvements')"
-mycursor.execute(jan48)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Buildings and Improvements')",([month_name4]))
 tab290 = mycursor.fetchall()
-feb48="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Buildings and Improvements')"
-mycursor.execute(feb48)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Buildings and Improvements')",([month_name3]))
 tab291 = mycursor.fetchall()
-mar48="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Buildings and Improvements')"
-mycursor.execute(mar48)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Buildings and Improvements')",([month_name2]))
 tab292 = mycursor.fetchall()
-apr48="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Buildings and Improvements')"
-mycursor.execute(apr48)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Buildings and Improvements')",([month_name1]))
 tab293= mycursor.fetchall()
-may48="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Buildings and Improvements')"
-mycursor.execute(may48)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Buildings and Improvements')",([month_name]))
 tab294= mycursor.fetchall()
-jun48="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Buildings and Improvements')"
-mycursor.execute(jun48)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Buildings and Improvements')",([full_month_name]))
 tab295= mycursor.fetchall()
-jan49="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Furniture and Equipment')"
-mycursor.execute(jan49)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Furniture and Equipment')",([month_name4]))
 tab296 = mycursor.fetchall()
-feb49="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Furniture and Equipment')"
-mycursor.execute(feb49)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Furniture and Equipment')",([month_name3]))
 tab297 = mycursor.fetchall()
-mar49="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Furniture and Equipment')"
-mycursor.execute(mar49)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Furniture and Equipment')",([month_name2]))
 tab298 = mycursor.fetchall()
-apr49="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Furniture and Equipment')"
-mycursor.execute(apr49)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Furniture and Equipment')",([month_name1]))
 tab299= mycursor.fetchall()
-may49="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Furniture and Equipment')"
-mycursor.execute(may49)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Furniture and Equipment')",([month_name]))
 tab300= mycursor.fetchall()
-jun49="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Furniture and Equipment')"
-mycursor.execute(jun49)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Furniture and Equipment')",([full_month_name]))
 tab301= mycursor.fetchall()
-jan50="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Land')"
-mycursor.execute(jan50)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Land')",([month_name4]))
 tab302 = mycursor.fetchall()
-feb50="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='February' AND(category1='Land')"
-mycursor.execute(feb50)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Land')",([month_name3]))
 tab303 = mycursor.fetchall()
-mar50="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='March' AND(category1='Land')"
-mycursor.execute(mar50)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Land')",([month_name2]))
 tab304 = mycursor.fetchall()
-apr50="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='April' AND(category1='Land')"
-mycursor.execute(apr50)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Land')",([month_name1]))
 tab305= mycursor.fetchall()
-may50="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='May' AND(category1='Land')"
-mycursor.execute(may50)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Land')",([month_name]))
 tab306= mycursor.fetchall()
-jun50="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='June' AND(category1='Land')"
-mycursor.execute(jun50)
+mycursor.execute("SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)=%s AND(category1='Land')",([full_month_name]))
 tab307= mycursor.fetchall()
 jan51="SELECT ROUND(SUM(grandtotal),3) FROM app1_expences WHERE paymmethod='cash'AND monthname(paymdate)='January' AND(category1='Leasehold Improvements')"
 mycursor.execute(jan51)
