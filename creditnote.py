@@ -274,8 +274,8 @@ def salescreditnote():
             total.delete(0, END) 
         def clear_total():
             sub.delete(0,END)    
-        q=float(quan1.get())
-        r=float(rate11.get())
+        q=float(qty.get())
+        r=float(rate.get())
         tot=(q*r)
         subtot=tot+tot2+tot3+tot4
         clear_text()

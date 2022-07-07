@@ -18,11 +18,12 @@ def salespayments():
         h=label44tabpayment.get()
         i=label44amountapply.get()
         j=label44amountcredit.get()
-        cur.execute("""UPDATE payment SET title =%s, firstname =%s, lastname =%s, company =%s, mobile =%s, email =%s, website =%s, billingrate =%s, terms =%s, openingbalance =%s,accountno =%s, gsttype =%s,gstin =%s, taxregisterationno =%s, effectivedate =%s, defaultexpenceaccount =%s, tds =%s, street =%s, city =%s, state =%s, pincode =%s, country =%s, notes =%s WHERE supplier_id =%s""",)
-            
+        cur.execute("UPDATE payment SET paymdate =%s,paymethod =%s,invno =%s, acctype =%s, payamount =%s, amtapply =%s,amtreceived =%s,amtcredit =%s WHERE paymentid =%s",(d,e,c,f,h,i,g,j,v))
+        mydata.commit()
+        estwin.destroy()    
 
     estwin=tk.Tk()
-    estwin.title('Sales Records')
+    estwin.title('Payments')
     estwin.geometry('1500x1000')
     estwin['bg'] = '#2f516f'
     cid=2
@@ -54,6 +55,7 @@ def salespayments():
     tk.Label(hf2,text='Customer',font=('times new roman', 14),bg='#2f516f').place(relx=0.05,rely=0.11) 
     estcus=ttk.Combobox(hf2,font=('times new roman', 12),values=tm)
     def get_mail(event):
+        global v
         def des():
             label44tabdescription.delete(0,END)
             email.delete(0,END)
@@ -69,13 +71,14 @@ def salespayments():
         # email.set(table1[9])
             # billto.set(i[12:17])
         
-        cur.execute("SELECT descrip,email,duedate,orgamt,openbal FROM payment where customer=%s ",([option]))
+        cur.execute("SELECT descrip,email,duedate,orgamt,openbal,paymentid FROM payment where customer=%s ",([option]))
         table2=cur.fetchone() 
         email.insert(0,table2[1])
         label44tabduedate.insert(0,table2[2])
         label44tabdescription.insert(0,table2[0])
         label44taboriginalamount.insert(0,table2[3])
         label44tabopenbalance.insert(0,table2[4])
+        v=table2[5]
     estcus.bind('<<ComboboxSelected>>',get_mail)
     estcus.place(relx=0.05,rely=0.15,relwidth=0.2,relheight=0.03)
     tk.Button(hf2,text='+',font=(14)).place(relx=0.26,rely=0.15,relwidth=0.025,relheight=0.03)
@@ -119,28 +122,28 @@ def salespayments():
     drop1accounttype['values']=("Deferred CGST","Deferred GST Input Credit","Deferred IGST","Deferred Krishi Kalyan Cess Input Credit","Deferred SGST","Deferred Service Tax Input Credit","Deferred VAT Input Credit","GST Refund","Inventory Asset","Krishi Kalyan Cess Refund","Prepaid Insurance","Service Tax Refund","TDS Receivable","Uncategorised Asset","Undeposited Fund")
     drop1accounttype.place(relx=0.55,rely=0.24,relwidth=0.2,relheight=0.03) 
     def deffadd():
+        def getpayaccvalues():
+            global cb
+            try:
+                actype=cm1.get()
+                name=nameinput.get()
+                dettype=l.get()
+                dec=descriptioninput.get()
+                act=cb.get()
+                tax=nb.get()
 
-        global add, bm
+                d='INSERT INTO accounts (acctype,detype,name,description,gst,deftaxcode,cid) VALUES (%s,%s,%s,%s,%s,%s,%s)'
+                cur.execute(d,[(actype),(dettype),(name),(dec),(act),(tax),(cid)])
+                mydata.commit()
+            except:
+                pass
+            drop1accounttype.insert(0,name)
+            add.destroy()
+        global add,cb
         add = tk.Toplevel(estwin)
         add.title('Add Account')
         add.geometry('1000x800')
-
-        # mycanvas = tk.Canvas(add, width=2000, height=1200)
-        # mycanvas.place(relx=0, rely=0, relwidth=1, relheight=1)
-
-        # yscrollbar = ttk.Scrollbar(
-        #     add, orient='vertical', command=mycanvas.yview)
-        # yscrollbar.pack(side=RIGHT, fill=Y)
-        # mycanvas.configure(yscrollcommand=yscrollbar.set)
-        # mycanvas.bind('<Configure>', lambda e: mycanvas.configure(
-        #     scrollregion=mycanvas.bbox('all')))
-        # frame = tk.Frame(mycanvas)
         add['bg'] = '#2f516f'
-
-        # mycanvas.create_window((0, 0), window=frame,
-        #                         anchor='nw', width=2000, height=1000)
-
-        # # contents frame
         
         uid=[4]
         acc_heading= Label(add, text="ACCOUNT CREATE",bd=0,relief="groove",bg='#2f516f', fg='#fff',height=2,pady=2,width=100)
@@ -231,7 +234,7 @@ def salespayments():
         nb.place(relx=0.5, rely=0.55, relwidth=0.4, relheight=0.065)
 
     
-        sub = tk.Button(hd1, text='Create', font=15, bg='#243e54',fg="#fff",width=40,).place(relx=0.28, rely=0.8)
+        sub = tk.Button(hd1, text='Create', font=15, bg='#243e54',fg="#fff",width=40,command=getpayaccvalues).place(relx=0.28, rely=0.8)
     tk.Button(hf2,text='+',font=(14),command=deffadd).place(relx=0.755,rely=0.24,relwidth=0.025,relheight=0.03)
     def key_press(event):
         def dec():

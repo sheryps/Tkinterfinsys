@@ -1066,7 +1066,7 @@ def get_selected_producting(event):
     if pr1 == "Invoice":
         import invoice
     if pr1 == "Payment":
-        import payment
+        import payments
     if pr1 == "Sales Receipt":
         import Salesreceipt
     if pr1 == "Credit note":

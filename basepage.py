@@ -42,7 +42,7 @@ class base:
         self.img2 = ImageTk.PhotoImage(Image.open("not.png").resize(size))
         self.img3 = ImageTk.PhotoImage(Image.open("cogwheel.png").resize(size))
 
-        toolbar = tk.Frame(Frame_login, bd=5, relief=RAISED,bg='#213e57',height=200) 
+        toolbar = tk.Frame(Frame_login, bd=5, relief=RAISED,bg='#213e57',height=400) 
         toolbar.pack(side=TOP, fill=X)
         
         size=(50,50)
@@ -54,15 +54,15 @@ class base:
         
         
         menubtn1 = tk.Menubutton(toolbar, relief=FLAT, compound= LEFT, 
-        text="",image=self.img1,bg='#213e57')
+        text="",bg='#213e57')
         menubtn1.pack(side=RIGHT, padx=45, pady=0)
 
         menubtn2 = tk.Menubutton(toolbar, relief=FLAT, compound= LEFT, 
-        text="", image=self.img2,bg='#213e57')
+        text="",bg='#213e57')
         menubtn2.place(x=1040,y=0)
 
         menubtn3 = tk.Menubutton(toolbar, relief=FLAT, compound= LEFT, 
-        text="", image=self.img3,bg='#213e57')
+        text="",bg='#213e57')
         menubtn3.place(x=950,y=0)
         
         
@@ -230,17 +230,22 @@ class base:
         opt = tk.OptionMenu(lab, variable, *OptionList)
         opt.config(width=10, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
         opt.place(x=910,y=120)
-
+        def accounttsec(n):
+            rep=accvariable.get()
+            if rep=='Chart of Accounts':
+                import chart0faccounts
+            elif rep=="Reconcile":
+                import reconcile    
         # 7
-        OptionList = [
+        OptionLists = [
         "Chart of Accounts",
         "Reconcile"
         ]
-        variable = tk.StringVar(lab)
-        variable.set('Accounting')
-        opt = tk.OptionMenu(lab, variable, *OptionList)
-        opt.config(width=10, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
-        opt.place(x=1060,y=120)
+        accvariable = tk.StringVar(lab)
+        accvariable.set('Accounting')
+        accopt = tk.OptionMenu(lab, accvariable, *OptionLists,command=accounttsec)
+        accopt.config(width=10, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
+        accopt.place(x=1060,y=120)
 
         
         
@@ -354,30 +359,41 @@ class base:
         opt = tk.OptionMenu(lab, variable, *OptionList)
         opt.config(width=13, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
         opt.place(x=270,y=120)
-        
+        def productionmenu(n):
+            rep=prodvariable.get()
+            if rep=='Material Master':
+                import materialmain
+            elif rep=="Price List":
+                import pricemain 
         # 10
-        OptionList = [
-        "Cash Position",
-        "Cash Flow Analyzer"
-        "Check Cash Flow"
+        OptionListt = [
+        "Material Master",
+        "Price List"
         ]
-        variable = tk.StringVar(lab)
-        variable.set('Production')
-        opt = tk.OptionMenu(lab, variable, *OptionList)
-        opt.config(width=13, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
-        opt.place(x=450,y=120)
-        
+        prodvariable = tk.StringVar(lab)
+        prodvariable.set('Production')
+        popt = tk.OptionMenu(lab, prodvariable, *OptionListt,command=productionmenu)
+        popt.config(width=13, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
+        popt.place(x=450,y=120)
+        def qualitynmenu(n):
+            rep=qualityvariable.get()
+            if rep=='Quality Inspection':
+                import qualityinspection
+            elif rep=="Quality Certificate":
+                import qualitycertificate
+            elif rep=="Quality Notification":
+                import qualitynotification   
         # 11
-        OptionList = [
-        "Cash Position",
-        "Cash Flow Analyzer"
-        "Check Cash Flow"
+        OptionListt1 = [
+            "Quality Inspection",
+            "Quality Certificate",
+            "Quality Notification"
         ]
-        variable = tk.StringVar(lab)
-        variable.set('Quality Management')
-        opt = tk.OptionMenu(lab, variable, *OptionList)
-        opt.config(width=13, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
-        opt.place(x=630,y=120)
+        qualityvariable = tk.StringVar(lab)
+        qualityvariable.set('Quality Management')
+        qualopt = tk.OptionMenu(lab, qualityvariable, *OptionListt1,command=qualitynmenu)
+        qualopt.config(width=13, bg="#213b52",fg="#fff",font=('Helvetica', 12, 'bold'))
+        qualopt.place(x=630,y=120)
         
         # 12
         OptionList = [
