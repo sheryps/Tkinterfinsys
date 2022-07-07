@@ -11,7 +11,7 @@ from datetime import datetime, date, timedelta
 from PIL import Image,ImageTk
 from tkinter import messagebox
 import datetime as dt
-#new
+
 
 mydata = mysql.connector.connect(host='localhost', user='root', password='', database='finsysinfox21', port='3307')
 cur = mydata.cursor()
@@ -203,10 +203,9 @@ def main():
             elif period=='This financial year':
                 cleartree()
                 customvalues()      
-        tk.Button(form_frame,text = "Run Report",bg="#243e55",fg="#fff",font=('times new roman', 16, 'bold'),command=accrecifetch).place(relx=0.55,rely=0.5,relwidth=0.15)
-        tk.Button(form_frame,text = "Back",bg="#243e55",fg="#fff",font=('times new roman', 16, 'bold')).place(relx=0.75,rely=0.5,relwidth=0.15)
+        tk.Button(form_frame,text = "Run Report",font=('times new roman', 16, 'bold'),command=accrecifetch).place(relx=0.55,rely=0.5,relwidth=0.15)
+        tk.Button(form_frame,text = "Back",font=('times new roman', 16, 'bold')).place(relx=0.75,rely=0.5,relwidth=0.15)
         form_frame.place(relx=0.1,rely=0.08,relwidth=0.8,relheight=0.1)
-
         tableframe=tk.Frame(profitlossframe,bg='#243e54')
         #image
         imageframe=tk.Frame(tableframe,bg='#add8e6')
@@ -215,12 +214,12 @@ def main():
         cur.execute("SELECT cimg,cname FROM app1_company WHERE cname =%s and cid =%s",([cc,cid]))
         image=cur.fetchone()
         
-        F2 = LabelFrame(form_frame, font=('times new roman', 15, ),border=0, fg="Black", bg="#e5e9ec")
-        F2.place(x=0, y=10, width=800, height=200)
-        size=(800,210)
-        ax=ImageTk.PhotoImage(Image.open('f3.png').resize(size))
-        tk.Label(F2,image=ax,bg='#e5e9ec', border=0).place(relx=0.00,rely=-0,relheight=1,relwidth=1 )
-              #contents
+        # F2 = LabelFrame(imageframe, font=('times new roman', 15, ),border=0, fg="Black", bg="#e5e9ec")
+        # F2.place(x=0, y=10, width=800, height=200)
+        # size=(800,210)
+        # ax=ImageTk.PhotoImage(Image.open('f3.png').resize(size))
+        # tk.Label(F2,image=ax,bg='#e5e9ec', border=0).place(relx=0.00,rely=-0,relheight=1,relwidth=1 )
+        #     #   contents
         conttframe=tk.Frame(tableframe,bg='white')
         conttframe.place(relx=0.05,rely=0.17,relwidth=0.9,relheight=0.7)
         mycanvass=tk.Canvas(conttframe,width=1200,height=800)
@@ -710,11 +709,11 @@ def main():
         
 
     # tk.Label(form2_frame,text="Select Date",bg='#243e55',fg='#fff',font=('times new roman', 16, 'bold')).place(relx=0.05,rely=0.08)
-    # options=["All dates", "Custom","Today","This month"]
-    # drop= ttk.Combobox(form2_frame,values=options,font=16)
-    # drop.current(0)
-    # drop.bind('<<ComboboxSelected>>',menuu)
-    # drop.place(relx=0.05,rely=0.5,relwidth=0.2,relheight=0.5)
+    options=["All dates", "Custom","Today","This month"]
+    drop= ttk.Combobox(form2_frame,values=options,font=16)
+    drop.current(0)
+    drop.bind('<<ComboboxSelected>>',menuu)
+    drop.place(relx=0.05,rely=0.5,relwidth=0.2,relheight=0.5)
         #buttons
     def editexp():
             
