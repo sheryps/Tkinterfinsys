@@ -74,7 +74,7 @@ def dashboard():
         s+=i[1] 
 
     #fetching data from payment table xx  
-    p=0.0 
+    p=0.0
     ahhhh="SELECT cid,amtreceived FROM payment WHERE cid= %s"
     cursor.execute(ahhhh,[cid])
     datazz=cursor.fetchall() 

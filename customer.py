@@ -14,7 +14,7 @@ def fun():#db connection
         host='localhost',
         user='root',
         password='root',
-        database='finsYs_tkinter'
+        database='finsys_tkinter1'
         )
     mycursor = mydb.cursor()
 
@@ -97,14 +97,14 @@ def add_customer():
             shippin=shippin.get()
             shipcountry=shipcountry.get()
             cid_id=1
-            sql='SELECT * FROM app1_customer WHERE firstname=%s AND lastname=%s'# selecting entire table from db,taking username , nd check the existance
+            sql='SELECT * FROM customer WHERE firstname=%s AND lastname=%s'# selecting entire table from db,taking username , nd check the existance
             val=(first_name,last_name)
             mycursor.execute(sql,val)
             if mycursor.fetchone()is not None:
                 messagebox.showerror('error', 'First Name and Last Name already exist!!')
             else:
                 
-                sql="INSERT INTO app1_customer (title,firstname,lastname ,company,location,gsttype,gstin ,panno ,email ,website,mobile,street ,city ,state,pincode ,country ,shipstreet ,shipcity ,shipstate,shippincode ,shipcountry,cid_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" #adding values into db
+                sql="INSERT INTO customer (title,firstname,lastname ,company,location,gsttype,gstin ,panno ,email ,website,mobile,street ,city ,state,pincode ,country ,shipstreet ,shipcity ,shipstate,shippincode ,shipcountry,cid_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" #adding values into db
                 val=(title,first_name,last_name,company,location,gst,gstin,pan_no,email,website,mobile,street,city,state,pin,country,shipstreet,shipcity,shipstate,shippin,shipcountry,cid_id)
                 mycursor.execute(sql,val)
                 mydb.commit()
@@ -461,7 +461,7 @@ def edit_customer():
         eshipstate=e_shipstate.get()
         eshippin=e_shippin.get()
         eshipcountry=e_shipcountry.get()
-        mycursor.execute("UPDATE app1_customer SET title =%s, firstname =%s, lastname =%s, company =%s, location =%s, gsttype =%s, gstin =%s, panno =%s, email =%s, website =%s,mobile =%s, street =%s,city =%s, state =%s, pincode =%s, country=%s, shipstreet =%s, shipcity =%s, shipstate =%s, shippincode =%s, shipcountry =%s where customerid=%s"
+        mycursor.execute("UPDATE customer SET title =%s, firstname =%s, lastname =%s, company =%s, location =%s, gsttype =%s, gstin =%s, panno =%s, email =%s, website =%s,mobile =%s, street =%s,city =%s, state =%s, pincode =%s, country=%s, shipstreet =%s, shipcity =%s, shipstate =%s, shippincode =%s, shipcountry =%s where customerid=%s"
             ,(etitle, efirst_name, elast_name, ecompany,elocation, egst, egstin, epan_no, eemail, ewebsite, emobile, estreet, ecity, estate, epin, ecountry, eshipstreet,eshipcity, eshipstate, eshippin, eshipcountry,data[0]))
         mydb.commit()
         messagebox.showinfo('successfully Updated')
@@ -473,7 +473,7 @@ def edit_customer():
     focus_data = custom_data.focus()
     values=custom_data.item(focus_data,'values')
     customer_id=[values[-1]]
-    mycursor.execute("SELECT * FROM app1_customer WHERE customerid=%s",(customer_id))
+    mycursor.execute("SELECT * FROM customer WHERE customerid=%s",(customer_id))
     data=mycursor.fetchone()
     editcustomer_form = tk.Tk()
     editcustomer_form.title("finsYs")
@@ -754,7 +754,7 @@ def delete_customer():
     focus_data = custom_data.focus()
     values=custom_data.item(focus_data,'values')
     customer_id=[values[-1]]
-    mycursor.execute("DELETE FROM app1_customer WHERE customerid=%s",(customer_id))
+    mycursor.execute("DELETE FROM customer WHERE customerid=%s",(customer_id))
     mydb.commit()
     messagebox.showinfo(title="Title",message ="Sucessfully Deleted")
     print('sucessfully deleted')
@@ -775,7 +775,7 @@ inv_heading.pack(fill=X)
 content_label=Label(customer,relief="groove",bg='#243e55', fg='#fff',width=500,height=30)
 
 add_customer=Button(content_label,text="Add Customer",background='#243e55', foreground="white",command=add_customer)
-add_customer.place(x=1450,y=100)
+add_customer.place(x=1250,y=50)
 
 style = ttk.Style()
 style.theme_use('classic')
@@ -801,9 +801,9 @@ custom_data.heading("panno",text="PAN NO",anchor=CENTER)
 custom_data.heading("email",text="EMAIL ID",anchor=CENTER)
 custom_data.heading("mobile",text="MOBILE NO",anchor=CENTER)
 
-custom_data.place(x=280,y=200)
+custom_data.place(x=180,y=100)
 
-sql='SELECT firstname,gsttype,gstin,panno,email,mobile,customerid from app1_customer'
+sql='SELECT firstname,gsttype,gstin,panno,email,mobile,customerid from customer'
 mycursor.execute(sql)
 customer_data=mycursor.fetchall()
 total=mycursor.rowcount
@@ -816,10 +816,10 @@ for data in customer_data:
 content_label.place(x=0,y=150)
 
 edit=Button(content_label,text="Edit",background='#243e55', foreground="white",command=edit_customer)
-edit.place(x=850,y=450)
+edit.place(x=850,y=350)
 
 delete=Button(content_label,text="Delete",background='#243e55', foreground="white",command=delete_customer)
 
-delete.place(x=950,y=450)
+delete.place(x=950,y=350)
 
 customer.mainloop()

@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import VERTICAL, ttk
 import tkinter.font as font
 import tkinter.messagebox as MessageBox
-import click
 import mysql.connector 
 from tkcalendar import Calendar, DateEntry
 import matplotlib.patches

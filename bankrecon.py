@@ -6,7 +6,6 @@ from tkinter import messagebox as MessageBox
 import tkinter.messagebox
 from PIL import Image,ImageTk
 from tkinter.ttk import Combobox
-from requests import get
 from tkcalendar import Calendar, DateEntry
 import mysql.connector as mysql
 import pymysql
@@ -17,7 +16,7 @@ def fun():#db connection
         host='localhost',
         user='root',
         password='',
-        database='finsys_tkinter'
+        database='finsys_tkinter1'
         )
     mycursor = mydb2.cursor()
     

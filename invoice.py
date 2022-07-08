@@ -17,7 +17,7 @@ def fun():#db connection
         host='localhost',
         user='root',
         password='root',
-        database='finsYs_tkinter'
+        database='finsys_tkinter1'
         )
     mycursor = mydb.cursor()
 
@@ -34,7 +34,7 @@ def add_invoice():
             if full_name==name[0]:
                 first_name=custm[2]
                 last_name=custm[3]
-        mycursor.execute("SELECT * FROM app1_customer where firstname=%s and lastname=%s",(first_name,last_name))
+        mycursor.execute("SELECT * FROM customer where firstname=%s and lastname=%s",(first_name,last_name))
         table2=mycursor.fetchall()
         for i in table2:
             email.set(i[9])
@@ -72,14 +72,14 @@ def add_invoice():
                 shippin=shippin.get()
                 shipcountry=shipcountry.get()
                 cid_id=cmp1[0]
-                sql='SELECT * FROM app1_customer WHERE firstname=%s AND lastname=%s'# selecting entire table from db,taking username , nd check the existance
+                sql='SELECT * FROM customer WHERE firstname=%s AND lastname=%s'# selecting entire table from db,taking username , nd check the existance
                 val=(first_name,last_name)
                 mycursor.execute(sql,val)
                 if mycursor.fetchone()is not None:
                     messagebox.showerror('error', 'First Name and Last Name already exist!!')
                 else:
                     
-                    sql="INSERT INTO app1_customer (title,firstname,lastname ,company,location,gsttype,gstin ,panno ,email ,website,mobile,street ,city ,state,pincode ,country ,shipstreet ,shipcity ,shipstate,shippincode ,shipcountry,cid_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" #adding values into db
+                    sql="INSERT INTO customer (title,firstname,lastname ,company,location,gsttype,gstin ,panno ,email ,website,mobile,street ,city ,state,pincode ,country ,shipstreet ,shipcity ,shipstate,shippincode ,shipcountry,cid_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)" #adding values into db
                     val=(title,first_name,last_name,company,location,gst,gstin,pan_no,email,website,mobile,street,city,state,pin,country,shipstreet,shipcity,shipstate,shippin,shipcountry,cid_id)
                     mycursor.execute(sql,val)
                     mydb.commit()
@@ -436,7 +436,7 @@ def add_invoice():
         print("qtyyyy=",quantity)
         selected_product.append(product)
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -448,7 +448,7 @@ def add_invoice():
                 tota_price=int(sale_price)*int(quantity)
                 total.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -460,7 +460,7 @@ def add_invoice():
                 total.set(tota_price) 
         
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -522,7 +522,7 @@ def add_invoice():
         selected_product.append(product)
         quantity2=qty_input2.get()
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -533,7 +533,7 @@ def add_invoice():
                 tota_price=int(sale_price)*int(quantity2)
                 total2.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -544,7 +544,7 @@ def add_invoice():
                 tota_price=int(sale_price)*int(quantity2)
                 total2.set(tota_price)
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -607,7 +607,7 @@ def add_invoice():
         selected_product.append(product)
         quantity3=qty_input3.get()
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -618,7 +618,7 @@ def add_invoice():
                 tota_price=int(sale_price)*int(quantity3)
                 total3.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -629,7 +629,7 @@ def add_invoice():
                 tota_price=int(sale_price)*int(quantity3)
                 total3.set(tota_price)
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -693,7 +693,7 @@ def add_invoice():
         selected_product.append(product)
         quantity4=qty_input4.get()
         for product in inv_data:
-            product_details="SELECT * FROM app1_inventory WHERE name=%s"
+            product_details="SELECT * FROM inventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -704,7 +704,7 @@ def add_invoice():
                 tota_price=int(sale_price)*int(quantity4)
                 total4.set(tota_price)
         for product in noninv_data:
-            product_details="SELECT * FROM app1_noninventory WHERE name=%s"
+            product_details="SELECT * FROM noninventory WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -715,7 +715,7 @@ def add_invoice():
                 tota_price=int(sale_price)*int(quantity4)
                 total4.set(tota_price)
         for product in bundleinv_data:
-            product_details="SELECT * FROM app1_bundle WHERE name=%s"
+            product_details="SELECT * FROM bundle WHERE name=%s"
             mycursor.execute(product_details,selected_product)
             data=mycursor.fetchall()
             for i in data:
@@ -823,7 +823,7 @@ def add_invoice():
         balance=balance.get()
         cid_id=cmp1[0]
 
-        sql="INSERT INTO app1_invoice (customername,email,invoiceno ,terms,invoicedate,duedate,bname ,placosupply ,product ,hsn,description,qty ,price ,total,tax ,subtotal ,grandtotal ,product2 ,hsn2,description2 ,qty2,price2,total2,tax2,product3,hsn3,description3,qty3,price3,total3,tax3,product4,hsn4,description4,qty4,price4,total4,tax4,amtrecvd,taxamount,baldue,cid_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        sql="INSERT INTO invoice (customername,email,invoiceno ,terms,invoicedate,duedate,bname ,placosupply ,product ,hsn,description,qty ,price ,total,tax ,subtotal ,grandtotal ,product2 ,hsn2,description2 ,qty2,price2,total2,tax2,product3,hsn3,description3,qty3,price3,total3,tax3,product4,hsn4,description4,qty4,price4,total4,tax4,amtrecvd,taxamount,baldue,cid_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         val=(Select_customer,email,Invno,terms,invoice_date,Due_date,billto,place_of_supply,product,hsn,desc,qty,price,total,tax,subtotal,grand,product2,hsn2,desc2,qty2,price2,total2,tax2,product3,hsn3,desc3,qty3,price3,total3,tax3,product4,hsn4,desc4,qty4,price4,total4,tax4,amt_received,taxamount,balance,cid_id)
         mycursor.execute(sql,val)
         mydb.commit()
@@ -865,7 +865,7 @@ def add_invoice():
     form_heading.pack()
 
     #get customer datas from customer table
-    mycursor.execute('select * from app1_customer ')
+    mycursor.execute('select * from customer ')
     customers=mycursor.fetchall()
     customers_data=[]
     for cus in customers:
@@ -879,29 +879,29 @@ def add_invoice():
 
     #company details
     user_id=[4]
-    mycursor.execute("SELECT cid FROM app1_company WHERE id_id=%s",(user_id))
+    mycursor.execute("SELECT cid FROM company WHERE id_id=%s",(user_id))
     cmp1=mycursor.fetchone()
 
     # cmp1=[1]
 
-    mycursor.execute("SELECT cname,cemail,state FROM app1_company WHERE id_id=%s",(user_id))
+    mycursor.execute("SELECT cname,cemail,state FROM company WHERE id_id=%s",(user_id))
     cmp_data=mycursor.fetchone()
 
 
     #invetory data
-    mycursor.execute("SELECT * FROM app1_inventory WHERE cid_id=%s",(cmp1))
+    mycursor.execute("SELECT * FROM inventory WHERE cid_id=%s",(cmp1))
     inventory_data=mycursor.fetchall()
 
     #bundle data
-    mycursor.execute("SELECT * FROM app1_bundle WHERE cid_id=%s",(cmp1))
+    mycursor.execute("SELECT * FROM bundle WHERE cid_id=%s",(cmp1))
     bundle_data=mycursor.fetchall()
 
     #noninventor data
-    mycursor.execute("SELECT * FROM app1_noninventory WHERE cid_id=%s",(cmp1))
+    mycursor.execute("SELECT * FROM noninventory WHERE cid_id=%s",(cmp1))
     noninventory_data=mycursor.fetchall()
 
     #service data
-    mycursor.execute("SELECT * FROM app1_service WHERE cid_id=%s",(cmp1))
+    mycursor.execute("SELECT * FROM service WHERE cid_id=%s",(cmp1))
     services_data=mycursor.fetchall()
 
 
@@ -1289,7 +1289,7 @@ def edit_customer():
             if full_name==name[0]:
                 first_name=custm[2]
                 last_name=custm[3]
-        mycursor.execute("SELECT * FROM app1_customer where firstname=%s and lastname=%s",(first_name,last_name))
+        mycursor.execute("SELECT * FROM customer where firstname=%s and lastname=%s",(first_name,last_name))
         table2=mycursor.fetchall()
         for i in table2:
             e_email.set(i[9])
@@ -1708,7 +1708,7 @@ def edit_customer():
         cid_id=cmp1[0]
 
 
-        mycursor.execute("UPDATE app1_invoice SET customername =%s, email =%s, invoiceno =%s, terms =%s, invoicedate =%s, duedate =%s, bname =%s, placosupply =%s, product =%s, hsn =%s,description =%s, qty =%s,price =%s, total =%s, tax =%s, subtotal=%s, grandtotal =%s, product2 =%s, hsn2 =%s, description2 =%s, qty2 =%s, price2 =%s, total2 =%s, tax2 =%s, product3 =%s, hsn3 =%s, description3 =%s, qty3 =%s, price3 =%s, total3 =%s, tax3 =%s, product4 =%s, hsn4 =%s, description4 =%s, qty4 =%s, price4 =%s, total4 =%s, tax4 =%s, amtrecvd =%s, taxamount =%s, baldue =%s, cid_id =%s where invoiceid=%s"
+        mycursor.execute("UPDATE invoice SET customername =%s, email =%s, invoiceno =%s, terms =%s, invoicedate =%s, duedate =%s, bname =%s, placosupply =%s, product =%s, hsn =%s,description =%s, qty =%s,price =%s, total =%s, tax =%s, subtotal=%s, grandtotal =%s, product2 =%s, hsn2 =%s, description2 =%s, qty2 =%s, price2 =%s, total2 =%s, tax2 =%s, product3 =%s, hsn3 =%s, description3 =%s, qty3 =%s, price3 =%s, total3 =%s, tax3 =%s, product4 =%s, hsn4 =%s, description4 =%s, qty4 =%s, price4 =%s, total4 =%s, tax4 =%s, amtrecvd =%s, taxamount =%s, baldue =%s, cid_id =%s where invoiceid=%s"
         ,(Select_customer,email,Invno,terms,invoice_date,Due_date,billto,place_of_supply,product,hsn,desc,qty,price,total,tax,subtotal,grand,product2,hsn2,desc2,qty2,price2,total2,tax2,product3,hsn3,desc3,qty3,price3,total3,tax3,product4,hsn4,desc4,qty4,price4,total4,tax4,amt_received,taxamount,balance,cid_id,data[0]))
         mydb.commit()
         mydb.close()
@@ -1719,7 +1719,7 @@ def edit_customer():
     focus_data = set.focus()
     values=set.item(focus_data,'values')
     invoice_id=[values[-1]]
-    mycursor.execute("SELECT * FROM app1_invoice WHERE invoiceid=%s",(invoice_id))
+    mycursor.execute("SELECT * FROM invoice WHERE invoiceid=%s",(invoice_id))
     data=mycursor.fetchone()
     print("Selected data is ",data)
     editinvoice_form = Toplevel(invoice)
@@ -2274,7 +2274,7 @@ def delete_invoice():
     focus_data = set.focus()
     values=set.item(focus_data,'values')
     invoic_id=[values[-1]]
-    mycursor.execute("DELETE FROM app1_invoice WHERE invoiceid=%s",(invoic_id))
+    mycursor.execute("DELETE FROM invoice WHERE invoiceid=%s",(invoic_id))
     mydb.commit()
     messagebox.showinfo('successfully Delated')
     print('sucessfully deleted')
@@ -2323,7 +2323,7 @@ set.heading("grade_total",text="GRADE TOTAL",anchor=CENTER)
 set.heading("balance_due",text="BALANCE DUE",anchor=CENTER)
 set.place(x=200,y=200)
 
-sql='SELECT invoiceno,invoicedate,customername,email,duedate,grandtotal,baldue,invoiceid from app1_invoice'
+sql='SELECT invoiceno,invoicedate,customername,email,duedate,grandtotal,baldue,invoiceid from invoice'
 mycursor.execute(sql)
 invoice_data=mycursor.fetchall()
 total=mycursor.rowcount
