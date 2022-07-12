@@ -11,17 +11,55 @@ from matplotlib.figure import Figure
 import matplotlib.cm as cm
 import matplotlib.figure
 import matplotlib.patches
+from currency_converter import CurrencyConverter
+import requests
 
 mydb=mysql.connector.connect(
     host='localhost',
     user='root',
     password='',
-    database='finsystkinter',
+    database='finsystkinter1',
     )
 mycursor = mydb.cursor()
 
+class RealTimeCurrencyConverter():
+    def __init__(self,url):
+            self.data = requests.get(url).json()
+            self.currencies = self.data['rates']
+
+    def convert(self, from_currency, to_currency, amount): 
+        initial_amount = amount 
+        if from_currency != 'USD' : 
+            amount = amount / self.currencies[from_currency] 
+  
+        # limiting the precision to 4 decimal places 
+        amount = round(amount * self.currencies[to_currency], 4) 
+        return amount
+
+
 def clear_frame():
    form_frame.destroy()
+# $ USD","₹ INR","¥ YEN","€ EURO 
+def crconvertor(event):
+    if currencymenu.get()=="₹ INR":
+        c=CurrencyConverter()
+        valu=str(c.convert(1,'USD','INR'))
+        cashposition=Label(heading_frame, text=f"Today: ₹ {valu} INR",font=('Helvitica',18),bg='#243e55',fg='white').place(x = 10, y =50,width=550)
+
+    if currencymenu.get()=="€ EURO":
+        c=CurrencyConverter()
+        valu=str(c.convert(1,'USD','EUR'))    
+        cashposition=Label(heading_frame,text=f"Today: € {valu} EUR",font=('Helvitica',18),bg='#243e55',fg='white').place(x = 10, y =50,width=550)
+
+    if currencymenu.get()=="$ USD":
+        c=CurrencyConverter()
+        valu=str(c.convert(1,'INR','USD'))
+        cashposition=Label(heading_frame,text=f"Today: $ {valu} USD",font=('Helvitica',18),bg='#243e55',fg='white').place(x =10 ,y =50,width=550)
+
+    if currencymenu.get()=="¥ YEN": #YEN is Japanees(JPY) currency
+        c=CurrencyConverter()
+        valu=str(c.convert(1,'USD','JPY'))    
+        cashposition=Label(heading_frame,text=f"Today: ¥ {valu} YEN",font=('Helvitica',18),bg='#243e55',fg='white').place(x = 10, y =50,width=550)
 
 def selected(event):
     if menu.get() == 'Pie':
@@ -149,12 +187,14 @@ heading_frame=Frame(mycanvas,width=1200,bg='#243e55',height=200)
 mycanvas.create_window((150,20),window=heading_frame,anchor="nw")
 # inv_heading= Label(mycanvas, borderwidth=1, relief="raised",width=180,bg='#243e55', fg='#fff',height=13)
 # inv_heading.pack(pady=20)
-cashposition=Label(heading_frame,text="Today: $ 3556345 USD",font=('Helvitica',18),bg='#243e55',fg='white').place(x = 80, y =50)
+c=CurrencyConverter()
+valu=str(c.convert(1,'INR','USD'))
+cashposition=Label(heading_frame,text=f"Today: $ {valu} USD",font=('Helvitica',18),bg='#243e55',fg='white').place(x =10 ,y =50,width=550)
 cash=Label(heading_frame,text="CASH POSITION",font=headingfont,bg='#243e55',fg='white').place(x = 60, y =110)                
-
-menu= StringVar()
-menu.set("Change currency")
-drop= OptionMenu(heading_frame, menu,"$ USD","₹ INR","¥ YEN","€ EURO")
+global currencymenu
+currencymenu= StringVar()
+currencymenu.set("Change currency")
+drop= OptionMenu(heading_frame, currencymenu,"$ USD","₹ INR","¥ YEN","€ EURO",command=crconvertor)
 drop.config(bg='#243e55', fg="white",font=('Arial',18))
 drop['menu'].config(bg='#2f516a',fg="white",font=('Arial',18))
 
