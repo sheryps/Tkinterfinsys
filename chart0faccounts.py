@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import VERTICAL, ttk
 import tkinter.font as font
 import tkinter.messagebox as MessageBox
-import click
 import mysql.connector 
 from tkcalendar import Calendar, DateEntry
 import matplotlib.patches
@@ -13,18 +12,18 @@ from tkinter import messagebox
 import datetime as dt
 
 
-mydata = mysql.connector.connect(host='localhost', user='root', password='', database='finsysinfox21', port='3307')
+mydata = mysql.connector.connect(host='localhost', user='root', password='', database='finsys_tkinter1', port='3306')
 cur = mydata.cursor()
 
-expense_form = tk.Tk()
-expense_form.title("New")
-expense_form.geometry("1500x1000")
-expense_form['bg'] = '#2f516a'
-wrappen = ttk.LabelFrame(expense_form)
-mycanvas = Canvas(wrappen)
-mycanvas.pack(side=LEFT, fill="both", expand="yes")
-yscrollbar = ttk.Scrollbar(wrappen, orient='vertical', command=mycanvas.yview)
-yscrollbar.pack(side=RIGHT, fill='y')
+# expense_form = tk.Tk()
+# expense_form.title("New")
+# expense_form.geometry("1500x1000")
+# expense_form['bg'] = '#2f516a'
+# wrappen = ttk.LabelFrame(expense_form)
+# mycanvas = Canvas(wrappen)
+# mycanvas.pack(side=LEFT, fill="both", expand="yes")
+# yscrollbar = ttk.Scrollbar(wrappen, orient='vertical', command=mycanvas.yview)
+# yscrollbar.pack(side=RIGHT, fill='y')
 
 
 def main():
@@ -53,9 +52,9 @@ def main():
     head = tk.LabelFrame(A, borderwidth=0, bg='#243e54')
     f = font.Font(family='Times New Roman', size=25)  # font
     lb = tk.Label(head, text='CHARTS OF ACCOUNTS', bg="#243e55", height=2,
-                  bd=5, relief="groove", font=f, width=106)
+                  bd=5,font=f)
     lb['font'] = f
-    lb.place(relx=0.05, rely=0.2)
+    lb.place(relx=0.1, rely=0.15,relwidth=0.8)
     head.place(relx=0.1, rely=0.05, relwidth=0.8, relheight=0.1)
 
     # contents frame
@@ -65,14 +64,11 @@ def main():
     
     
     searchbox=StringVar()
-    searchbox_input=Entry(A, text="Search Here",textvariable=searchbox,bg="#2f516f",fg="#fff",width=35)
+    searchbox_input=Entry(form2_frame, text="Search Here",textvariable=searchbox,bg="#2f516f",fg="#fff")
     searchbox_input.insert(0,"Filter By Name")
     searchbox_input.bind("<KeyRelease>",Searching)
-    searchbox_input.place(x=200,y=175,height=40)
+    searchbox_input.place(relx=0.05,rely=0.05,relwidth=0.15,relheight=0.5)
 
-
-    # searchbox_input.place(relx=0.3, rely=0.3)
-    # table view
 
     style = ttk.Style()
     style.theme_use('default')
@@ -99,7 +95,7 @@ def main():
 
 
 
-    cur.execute( "SELECT accounts1id,name,acctype,detype,deftaxcode,balance FROM app1_accounts1")
+    cur.execute( "SELECT accounts1id,name,acctype,detype,deftaxcode,balance FROM accounts1")
     val2 = cur.fetchall()
     if val2:
         for x in val2:
@@ -108,7 +104,7 @@ def main():
 
 
     cur.execute(
-        "SELECT accountsid,name,acctype,detype,deftaxcode,balance FROM app1_accounts")
+        "SELECT accountsid,name,acctype,detype,deftaxcode,balance FROM accounts")
     val = cur.fetchall()
     if val:
         for x in val:
@@ -207,18 +203,6 @@ def main():
         tk.Button(form_frame,text = "Back",font=('times new roman', 16, 'bold')).place(relx=0.75,rely=0.5,relwidth=0.15)
         form_frame.place(relx=0.1,rely=0.08,relwidth=0.8,relheight=0.1)
         tableframe=tk.Frame(profitlossframe,bg='#243e54')
-        #image
-        imageframe=tk.Frame(tableframe,bg='#add8e6')
-        size=(200,200)
-        cc='kijuk tech'
-        cur.execute("SELECT cimg,cname FROM app1_company WHERE cname =%s and cid =%s",([cc,cid]))
-        image=cur.fetchone()
-        
-        # F2 = LabelFrame(imageframe, font=('times new roman', 15, ),border=0, fg="Black", bg="#e5e9ec")
-        # F2.place(x=0, y=10, width=800, height=200)
-        # size=(800,210)
-        # ax=ImageTk.PhotoImage(Image.open('f3.png').resize(size))
-        # tk.Label(F2,image=ax,bg='#e5e9ec', border=0).place(relx=0.00,rely=-0,relheight=1,relwidth=1 )
         #     #   contents
         conttframe=tk.Frame(tableframe,bg='white')
         conttframe.place(relx=0.05,rely=0.17,relwidth=0.9,relheight=0.7)
@@ -255,7 +239,7 @@ def main():
             
         treevvv.place(relx=0,rely=0,relwidth=1)  
         def accrevalldates():#all dates
-            cur.execute("SELECT customername, SUM(baldue) FROM app1_invoice WHERE cid=%s GROUP BY customername",([cid]))
+            cur.execute("SELECT customername, SUM(baldue) FROM invoice WHERE cid=%s GROUP BY customername",([cid]))
             vall=cur.fetchall()
             trans='Invoice Balance Due'
             try:
@@ -264,7 +248,7 @@ def main():
             except:
                 pass 
             transs='Credit Note' 
-            cur.execute("SELECT customer,SUM(grndtot) FROM app1_credit WHERE cid =%s GROUP BY customer",([cid]))
+            cur.execute("SELECT customer,SUM(grndtot) FROM credit WHERE cid =%s GROUP BY customer",([cid]))
             val=cur.fetchall()   
             try:
                 for j in val:
@@ -273,7 +257,7 @@ def main():
                 pass          
         tableframe.place(relx=0.1,rely=0.19,relwidth=0.8,relheight=0.7)
         def accrevtoday():#today values
-            cur.execute("SELECT customername,SUM(baldue) FROM app1_invoice WHERE invoicedate =%s and cid =%s GROUP BY customername",(fromdate,cid))
+            cur.execute("SELECT customername,SUM(baldue) FROM invoice WHERE invoicedate =%s and cid =%s GROUP BY customername",(fromdate,cid))
             vall=cur.fetchall()
             trans='Invoice Balance Due'
             try:
@@ -282,7 +266,7 @@ def main():
             except:
                 pass 
             transs='Credit Note' 
-            cur.execute("SELECT customer,SUM(grndtot) FROM app1_credit WHERE creditdate =%s and cid =%s GROUP BY customer",(fromdate,cid))
+            cur.execute("SELECT customer,SUM(grndtot) FROM credit WHERE creditdate =%s and cid =%s GROUP BY customer",(fromdate,cid))
             val=cur.fetchall()   
             try:
                 for j in val:
@@ -290,7 +274,7 @@ def main():
             except:
                 pass 
         def customvalues():#other values
-            cur.execute("SELECT customername,SUM(baldue) FROM app1_invoice WHERE invoicedate BETWEEN %s and %s and cid =%s GROUP BY customername",(fromdate,todate,cid))
+            cur.execute("SELECT customername,SUM(baldue) FROM invoice WHERE invoicedate BETWEEN %s and %s and cid =%s GROUP BY customername",(fromdate,todate,cid))
             vall=cur.fetchall()
             trans='Invoice Balance Due'
             try:
@@ -299,7 +283,7 @@ def main():
             except:
                 pass  
             transs='Credit Note' 
-            cur.execute("SELECT customer,SUM(grndtot) FROM app1_credit WHERE creditdate BETWEEN %s and %s and cid =%s GROUP BY customer",(fromdate,todate,cid))
+            cur.execute("SELECT customer,SUM(grndtot) FROM credit WHERE creditdate BETWEEN %s and %s and cid =%s GROUP BY customer",(fromdate,todate,cid))
             val=cur.fetchall()   
             try:
                 for j in val:
@@ -312,12 +296,12 @@ def main():
 
 
         uid=[4]
-        cur.execute("select cid from app1_company where id_id=%s",(uid))
+        cur.execute("select cid from company where id=%s",(uid))
         cmp1=cur.fetchone()
         
 
 
-        cur.execute("SELECT name FROM app1_accounts ")
+        cur.execute("SELECT name FROM accounts ")
 
         accdata= cur.fetchall()
     
@@ -325,20 +309,20 @@ def main():
             if values[1] in x:
                 pass
             else:
-                cur.execute("select * from app1_accounts1 where accounts1id=%s and cid_id=%s",(b[0],cmp1[0]))
+                cur.execute("select * from accounts1 where accounts1id=%s and cid=%s",(b[0],cmp1[0]))
                 account=cur.fetchone()
         balance=account[7]
         oplist=['Input CGST', 'Input SGST','Input IGST']
         oplist2=['Output IGST','Output SGST','Output CGST']
         
         if account[3] == 'Account Receivable(Debtors)':
-            cur.execute("select * from app1_invoice where  cid_id=%s",(cmp1))
+            cur.execute("select * from invoice where  cid_id=%s",(cmp1))
             invoic=cur.fetchall()
-            cur.execute("select * from app1_credit where  cid_id=%s",(cmp1))
+            cur.execute("select * from credit where  cid_id=%s",(cmp1))
             creditnote=cur.fetchall()
-            cur.execute("select * from app1_payment where  cid_id=%s",(cmp1))
+            cur.execute("select * from payment where  cid_id=%s",(cmp1))
             paymen=cur.fetchall()
-            cur.execute("select * from app1_salesrecpts where  cid_id=%s",(cmp1))
+            cur.execute("select * from salesrecpts where  cid_id=%s",(cmp1))
             salesofline=cur.fetchall()
             trans='Invoice'
             accname=account[3]
@@ -369,17 +353,17 @@ def main():
 
         elif account[3] == 'Accounts Payable(Creditors)':
             ty='openbalance'
-            cur.execute("select * from app1_bills where  cid_id=%s and payornot=%s",(cmp1[0],'openbalance'))
+            cur.execute("select * from bills where  cid_id=%s and payornot=%s",(cmp1[0],'openbalance'))
             bill=cur.fetchall()
             ty=''
-            cur.execute("select * from app1_bills where  cid_id=%s and payornot=%s",(cmp1[0],ty))
+            cur.execute("select * from bills where  cid_id=%s and payornot=%s",(cmp1[0],ty))
             bill2=cur.fetchall()
             ty='debit'
-            cur.execute("select * from app1_bills where  cid_id=%s and payornot=%s",(cmp1[0],ty))
+            cur.execute("select * from bills where  cid_id=%s and payornot=%s",(cmp1[0],ty))
             bill3=cur.fetchall()
-            cur.execute("select * from app1_suplrcredit where  cid_id=%s",(cmp1))
+            cur.execute("select * from suplrcredit where  cid_id=%s",(cmp1))
             debit=cur.fetchall()
-            cur.execute("select * from app1_expences where  cid_id=%s",(cmp1))
+            cur.execute("select * from expences where  cid_id=%s",(cmp1))
             expence=cur.fetchall()
             trans='payment'
             accname=account[3]
@@ -420,9 +404,9 @@ def main():
     
         elif account[3] in oplist:
             global supp
-            cur.execute("select * from app1_company where  cid=%s",(cmp1))
+            cur.execute("select * from company where  cid=%s",(cmp1))
             cmp=cur.fetchone()
-            cur.execute("select * from app1_suplrcredit where  cid_id=%s",(cmp1))
+            cur.execute("select * from suplrcredit where  cid_id=%s",(cmp1))
             deb=cur.fetchall()
             debit = []
             accname=account[3]
@@ -432,17 +416,17 @@ def main():
                 if len(x) == 3:
                     firstname = x[0]
                     lastname = x[1] + ' ' + x[2]
-                    cur.execute("select * from app1_supplier where firstname=%s and lastname=%s and cid_id=%s",(firstname,lastname,cmp1[0]))
+                    cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(firstname,lastname,cmp1[0]))
                     supp=cur.fetchone()
                 else:
-                    cur.execute("select * from app1_supplier where firstname=%s and lastname=%s and cid_id=%s",(x[0],x[1],cmp1[0]))
+                    cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(x[0],x[1],cmp1[0]))
                     supp=cur.fetchone()
 
                 if supp[21]==cmp[4]:
                     debit.append(
                         [i[3], i[4], i[1], float(i[54]) / 2])
                     
-            cur.execute("select * from app1_expences where  cid_id=%s",(cmp1))
+            cur.execute("select * from expences where  cid_id=%s",(cmp1))
             expen=cur.fetchall()
             expence = []
             for i in expen:
@@ -451,10 +435,10 @@ def main():
                 if len(x) == 3:
                     firstname = x[0]
                     lastname = x[1] + ' ' + x[2]
-                    cur.execute("select * from app1_supplier where firstname=%s and lastname=%s and cid_id=%s",(firstname,lastname,cmp1[0]))
+                    cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(firstname,lastname,cmp1[0]))
                     supp=cur.fetchone()
                 else:
-                    cur.execute("select * from app1_supplier where firstname=%s and lastname=%s and cid_id=%s",(x[0],x[1],cmp1[0]))
+                    cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(x[0],x[1],cmp1[0]))
                     supp=cur.fetchone()
                 if supp[21]==cmp[4]:
                     expence.append([i[2], i[4], (i[1]).replace(
@@ -477,9 +461,9 @@ def main():
 
 
         elif account[3] in oplist2:
-            cur.execute("select * from app1_invoice where cid_id=%s ",(cmp1))
+            cur.execute("select * from invoice where cid_id=%s ",(cmp1))
             invoi=cur.fetchall()
-            cur.execute("select * from app1_company where  cid=%s",(cmp1))
+            cur.execute("select * from company where  cid=%s",(cmp1))
             cmp=cur.fetchone()
             accname=account[3]
             invoic = []
@@ -488,7 +472,7 @@ def main():
                     invoic.append(
                         [i[5], i[3], (i[1]).replace(u'\xa0', u''), float(i[40]) / 2])
            
-            cur.execute("select * from app1_credit where cid_id=%s ",(cmp1))
+            cur.execute("select * from credit where cid_id=%s ",(cmp1))
             creditnot=cur.fetchall()
             creditnote = []
             for i in creditnot:
@@ -496,7 +480,7 @@ def main():
                     creditnote.append(
                         [i[4], i[5], (i[1]).replace(u'\xa0', u''), float(i[17]) / 2])
             # salesrcpt = salesrecpts.objects.filter(cid=cmp1)
-            cur.execute("select * from app1_salesrecpts where cid_id=%s ",(cmp1))
+            cur.execute("select * from salesrecpts where cid_id=%s ",(cmp1))
             salesrcpt=cur.fetchall()
             salesrecipt = []
             for i in salesrcpt:
@@ -528,157 +512,7 @@ def main():
                 pass      
       
     def view():
-            
-            # Get selected item to Edit
-
-            cur.execute('SELECT * FROM app1_accounts')
-            s = cur.fetchone()
-            D = tk.Toplevel(A)
-            print(s)
-            
-
-            mycanvas.configure(yscrollcommand=yscrollbar.set)
-            mycanvas.bind('<Configure>', lambda e: mycanvas.configure(scrollregion=mycanvas.bbox('all')))
-
-            full_frame = Frame(mycanvas, width=1500, height=1100, bg='#2f516a')
-            mycanvas.create_window((0, 0), window=full_frame, anchor="nw")
-
-            heading_frame = Frame(mycanvas)
-            mycanvas.create_window((0, 40), window=heading_frame, anchor="nw")
-            headingfont = font.Font(family='Times New Roman', size=25,)
-            credit_heading = Label(heading_frame, text="Balance Sheet", fg='#fff',bg='#243e55', height=2, bd=5, relief="groove", font=headingfont, width=95)
-            credit_heading.pack(padx=0, pady=0)
-
-            # form fields
-            form2_frame = Frame(mycanvas, width=1200, height=900, bg='#243e55')
-            mycanvas.create_window((20, 150), window=form2_frame, anchor="nw")
-            
-            form_frame = Frame(mycanvas, width=800, height=700, bg='#fff')
-            mycanvas.create_window((200, 250), window=form_frame, anchor="nw")
-            
-            
-            
-            
-            F2 = LabelFrame(form_frame, font=('times new roman', 15, ),border=0, fg="Black", bg="#e5e9ec")
-            F2.place(x=0, y=10, width=800, height=200)
-            size=(800,210)
-
-            ax=ImageTk.PhotoImage(Image.open('f3.png').resize(size))
-           
-            tk.Label(F2,image=ax,bg='#e5e9ec', border=0).place(relx=0.00,rely=-0,relheight=1,relwidth=1 )
-            
-            
-            datel = Label(form_frame, text="Account Reciveables(Debitor)", bg='#fff',fg='#000')
-            datel.place(x=100, y=190, width=250)
-            datel_input = StringVar()
-            datel_input = Entry(form_frame, width=15, bg="#fff",fg='#000')
-            datel_input.place(x=350, y=190, height=40)
-            try:
-                datel_input.insert(0, s[0])
-            except:
-                pass
-        
-            skul = Label(form_frame, text="Total Account Reciveables(Debitor)", bg='#fff',fg='#000')
-            skul.place(x=100, y=240, width=250)
-            skul_input = StringVar()
-            skul_input = Entry(form_frame, width=15, bg='#fff', fg='#000')
-            skul_input.place(x=350, y=240, height=40)
-            wrappen.pack(fill='both', expand='yes',)
-            try:
-                skul_input.insert(0, s[0])
-            except:
-                pass
-
-            proname = Label(form_frame, text="Total Current Assets", bg='#fff', fg='#000')
-            proname.place(x=100, y=290, width=150)
-            proname_input = StringVar()
-            proname_input = Entry(form_frame, width=15, bg='#fff', fg='#000')
-            proname_input.place(x=350, y=290, height=40)
-            try:
-                proname_input.insert(0, s[0])
-            except:
-                pass
-            
-            idl = Label(form_frame, text="Total Assets", bg='#fff', fg='#000')
-            idl.place(x=100, y=340, width=100)
-            idl_input = StringVar()
-            idl_input = Entry(form_frame, width=15, bg='#fff', fg='#000')
-            idl_input.place(x=350, y=340, height=40)
-            try:
-                idl_input.insert(0, s[0])
-            except:
-                pass
-        
-        
-            cusname = tk.Label(form_frame, text="Total Account Payables(Creditors)", bg='#fff', fg='#000')
-            cusname.place(x=100, y=390, height=15, width=250)
-            cusname_input = StringVar()
-            cusname_input = Entry(form_frame, width=15, bg='#fff', fg='#000')
-            cusname_input.place(x=350, y=390, height=40)
-            wrappen.pack(fill='both', expand='yes',)
-            try:
-                cusname_input.insert(0, s[0])
-            except:
-                pass
-
-            insdate = tk.Label(
-                form_frame, text="Total Current Liabilities", bg='#fff', fg='#000')
-            place_input = StringVar()
-            insdate.place(x=100, y=440, height=15, width=200)
-            insdate_input = Entry(form_frame, width=15, bg="#fff",fg='#000')
-            insdate_input.place(x=350, y=440, height=40)
-            wrappen.pack(fill='both', expand='yes',)
-            try:
-                insdate_input.insert(0, s[0])
-            except:
-                pass
-            
-            insdate = tk.Label(
-                form_frame, text="Profit for the Share", bg='#fff', fg='#000')
-            place_input = StringVar()
-            insdate.place(x=100, y=490, height=15, width=200)
-            insdate_input = Entry(form_frame, width=15, bg="#fff",fg='#000')
-            insdate_input.place(x=350, y=490, height=40)
-            wrappen.pack(fill='both', expand='yes',)
-            try:
-                insdate_input.insert(0, s[0])
-            except:
-                pass
-            
-            insdate = tk.Label(
-                form_frame, text="Total Equity", bg='#fff', fg='#000')
-            place_input = StringVar()
-            insdate.place(x=100, y=540, height=15, width=100)
-            insdate_input = Entry(form_frame, width=15, bg="#fff",fg='#000')
-            insdate_input.place(x=350, y=540, height=40)
-            wrappen.pack(fill='both', expand='yes',)
-            try:
-                insdate_input.insert(0, s[0])
-            except:
-                pass
-            
-            insdate = tk.Label(
-                form_frame, text="Total Liabilities and Equity", bg='#fff', fg='#000')
-            place_input = StringVar()
-            insdate.place(x=100, y=590, height=15, width=200)
-            insdate_input = Entry(form_frame, width=15, bg="#fff",fg='#000')
-            insdate_input.place(x=350, y=590, height=40)
-            wrappen.pack(fill='both', expand='yes',)
-            try:
-                insdate_input.insert(0, s[0])
-            except:
-                pass
-            
-            
-            # note1 = tk.Label(form_frame, text="This Product Was produced In Accordance With The Guidlines And Monitored In Every Manufacturing Stage.", bg='#fff', fg='#000')
-            # note1.place(x=30, y=590, height=20, width=800)
-            # note2 = tk.Label(form_frame, text="****END****", bg='#fff', fg='#000')
-            # note2.place(x=30, y=620, height=20, width=800)
-            
-            D.mainloop()
-
-
-
+        import balancesheet
     def menuu(e):
         global fromdate,todate,dte,dtee
         dropp=drop.get()
@@ -706,15 +540,7 @@ def main():
                 pyear = int(toda.strftime("%Y")) + 1
                 fromdate = f'{toda.strftime("%Y")}-03-01'
                 todate = f'{pyear}-03-31'
-        
 
-    # tk.Label(form2_frame,text="Select Date",bg='#243e55',fg='#fff',font=('times new roman', 16, 'bold')).place(relx=0.05,rely=0.08)
-    options=["All dates", "Custom","Today","This month"]
-    drop= ttk.Combobox(form2_frame,values=options,font=16)
-    drop.current(0)
-    drop.bind('<<ComboboxSelected>>',menuu)
-    drop.place(relx=0.05,rely=0.5,relwidth=0.2,relheight=0.5)
-        #buttons
     def editexp():
             
         # Get selected item to Edit
@@ -726,7 +552,7 @@ def main():
         print(b)
         n=[values[1]]
         print("b is",n[0])
-        cur.execute("SELECT name FROM app1_accounts ")
+        cur.execute("SELECT name FROM accounts ")
 
         accdata= cur.fetchall()
     
@@ -734,14 +560,14 @@ def main():
             
             if values[1] in x:
                 cur.execute(
-                    "SELECT acctype,name,detype,description,gst,deftaxcode,balance FROM app1_accounts WHERE name=%s", (n))
+                    "SELECT acctype,name,detype,description,gst,deftaxcode,balance FROM accounts WHERE name=%s", (n))
 
                 s = cur.fetchone()
                 print("Edited data is1",s)
                 break
             else:
                 cur.execute(
-                    "SELECT acctype,name,detype,description,gst,deftaxcode,balance FROM app1_accounts1 WHERE name=%s", (n))
+                    "SELECT acctype,name,detype,description,gst,deftaxcode,balance FROM accounts1 WHERE name=%s", (n))
 
                 s = cur.fetchone()
                 print("Edited data2 is",s)
@@ -788,26 +614,26 @@ def main():
                     print("name in x",x)
                     if name in x:
                         if sub_account==None:
-                            cur.execute("UPDATE  app1_accounts SET description=%s,gst=%s,deftaxcode=%s where accountsid=%s",(description,'',deftaxcode, b[0]))
+                            cur.execute("UPDATE  accounts SET description=%s,gst=%s,deftaxcode=%s where accountsid=%s",(description,'',deftaxcode, b[0]))
 
                             mydata.commit()
                             edit.destroy()
                             messagebox.showinfo(title='Success',message='Account updated')
                         else:
-                            cur.execute("UPDATE  app1_accounts SET description=%s,gst=%s,deftaxcode=%s where accountsid=%s",(description,sub_account,deftaxcode, b[0]))
+                            cur.execute("UPDATE  accounts SET description=%s,gst=%s,deftaxcode=%s where accountsid=%s",(description,sub_account,deftaxcode, b[0]))
 
                             mydata.commit()
                             edit.destroy()
                             messagebox.showinfo(title='Success',message='Account updated')
                     else:
                         if sub_account==None:
-                            cur.execute("UPDATE  app1_accounts1 SET description=%s,gst=%s,deftaxcode=%s,balance=%s where accountsid=%s",(description,'',deftaxcode,finsys_amt, b[0]))
+                            cur.execute("UPDATE  accounts1 SET description=%s,gst=%s,deftaxcode=%s,balance=%s where accountsid=%s",(description,'',deftaxcode,finsys_amt, b[0]))
 
                             mydata.commit()
                             edit.destroy()
                             messagebox.showinfo(title='Success',message='Account updated')
                         else:
-                            cur.execute("UPDATE  app1_accounts1 SET description=%s,gst=%s,deftaxcode=%s,balance=%s where accounts1id=%s",(description,sub_account,deftaxcode,finsys_amt, b[0]))
+                            cur.execute("UPDATE  accounts1 SET description=%s,gst=%s,deftaxcode=%s,balance=%s where accounts1id=%s",(description,sub_account,deftaxcode,finsys_amt, b[0]))
                             mydata.commit()
                             edit.destroy()
                             messagebox.showinfo(title='Success',message='Account updated')
@@ -834,7 +660,7 @@ def main():
         edit['bg'] = '#2f516f'
         
         uid=[4]
-        cur.execute("select cid from app1_company where id_id=%s",(uid))
+        cur.execute("select cid from company where id_id=%s",(uid))
         cmp1=cur.fetchone()
         acc_heading= Label(edit, text="Account",bd=0,relief="groove",bg='#2f516f',font=f2, fg='#fff',height=2,pady=2,width=100)
         acc_heading.pack()
@@ -943,14 +769,14 @@ def main():
                 
 
 
-    bt1=Button(form2_frame,text = "Run Report",fg="#000",font=('times new roman', 16, 'bold'),command=view).place(relx=0.68,rely=0.5,relwidth=0.13)
-    bt2=Button(form2_frame,text = "New",fg="#000",font=('times new roman', 16, 'bold'),command=add_account).place(relx=0.82,rely=0.5,relwidth=0.07)
+    bt1=Button(form2_frame,text = "Run Report",bg="#243e54",font=('times new roman', 16, 'bold'),command=view).place(relx=0.6,rely=0.3,relwidth=0.13)
+    bt2=Button(form2_frame,text = "New",bg="#243e54",font=('times new roman', 16, 'bold'),command=add_account).place(relx=0.75,rely=0.3,relwidth=0.07)
     # bt2 = tk.Button(hd, text='New',command="add_account", bg='#243e54')
-    bt3 = tk.Button(form2_frame,text = "Import",fg="#000",font=('times new roman', 16, 'bold'),command='').place(relx=0.9,rely=0.5,relwidth=0.11)
+    bt3 = tk.Button(form2_frame,text = "Import",bg="#243e54",font=('times new roman', 16, 'bold'),command='').place(relx=0.83,rely=0.3,relwidth=0.11)
     
     
 
-    form2_frame.place(relx=0.01,rely=0.075,relwidth=0.8,relheight=0.09)
+    form2_frame.place(relx=0.01,rely=0.075,relwidth=1,relheight=0.09)
 
 
     # table view
@@ -977,7 +803,7 @@ def main():
     treevv.column(8, minwidth=30, width=140, anchor=CENTER)
     
     def accrevalldates():#all dates
-            cur.execute("SELECT customername, SUM(baldue) FROM app1_invoice WHERE cid=%s GROUP BY customername",([id]))
+            cur.execute("SELECT customername, SUM(baldue) FROM invoice WHERE cid=%s GROUP BY customername",([id]))
             vall=cur.fetchall()
             trans='Invoice Balance Due'
             try:
@@ -986,7 +812,7 @@ def main():
             except:
                 pass 
             transs='Credit Note' 
-            cur.execute("SELECT customer,SUM(grndtot) FROM app1_credit WHERE cid =%s GROUP BY customer",([id]))
+            cur.execute("SELECT customer,SUM(grndtot) FROM credit WHERE cid =%s GROUP BY customer",([id]))
             val=cur.fetchall()   
             try:
                 for j in val:
@@ -994,7 +820,7 @@ def main():
             except:
                 pass          
     def accrevtoday():#today values
-            cur.execute("SELECT customername,SUM(baldue) FROM app1_invoice WHERE invoicedate =%s and cid =%s GROUP BY customername",(fromdate,id))
+            cur.execute("SELECT customername,SUM(baldue) FROM invoice WHERE invoicedate =%s and cid =%s GROUP BY customername",(fromdate,id))
             vall=cur.fetchall()
             trans='Invoice Balance Due'
             try:
@@ -1003,7 +829,7 @@ def main():
             except:
                 pass 
             transs='Credit Note' 
-            cur.execute("SELECT customer,SUM(grndtot) FROM app1_credit WHERE creditdate =%s and cid =%s GROUP BY customer",(fromdate,id))
+            cur.execute("SELECT customer,SUM(grndtot) FROM credit WHERE creditdate =%s and cid =%s GROUP BY customer",(fromdate,id))
             val=cur.fetchall()   
             try:
                 for j in val:
@@ -1011,7 +837,7 @@ def main():
             except:
                 pass 
     def customvalues():#other values
-            cur.execute("SELECT customername,SUM(baldue) FROM app1_invoice WHERE invoicedate BETWEEN %s and %s and cid =%s GROUP BY customername",(fromdate,todate,id))
+            cur.execute("SELECT customername,SUM(baldue) FROM invoice WHERE invoicedate BETWEEN %s and %s and cid =%s GROUP BY customername",(fromdate,todate,id))
             vall=cur.fetchall()
             trans='Invoice Balance Due'
             try:
@@ -1020,7 +846,7 @@ def main():
             except:
                 pass  
             transs='Credit Note' 
-            cur.execute("SELECT customer,SUM(grndtot) FROM app1_credit WHERE creditdate BETWEEN %s and %s and cid =%s GROUP BY customer",(fromdate,todate,id))
+            cur.execute("SELECT customer,SUM(grndtot) FROM credit WHERE creditdate BETWEEN %s and %s and cid =%s GROUP BY customer",(fromdate,todate,id))
             val=cur.fetchall()   
             try:
                 for j in val:
@@ -1029,10 +855,10 @@ def main():
                 pass          
     
   
-    uid=[4]
-    cur.execute("select cid from app1_company where id_id=%s",(uid))
+    uid=[2]
+    cur.execute("select cid from company where id=%s",(uid))
     cmp1=cur.fetchone()
-    cur.execute("SELECT name FROM app1_accounts ")
+    cur.execute("SELECT name FROM accounts ")
     accdata= cur.fetchall()
 
     
@@ -1074,26 +900,24 @@ def add_account():
                     
             con = mysql.connector.connect(host="127.0.0.1", user="root", password="", database="finsysinfox21", port='3307')
             cur = con.cursor()
-            cur.execute('INSERT INTO app1_accounts1(acctype,detype,name,description,gst,balance,asof,cid_id,deftaxcode) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',(acctype,detype,name,description,gst,balance,asof,cid_id,deftaxcode))      
+            cur.execute('INSERT INTO accounts1(acctype,detype,name,description,gst,balance,asof,cid_id,deftaxcode) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)',(acctype,detype,name,description,gst,balance,asof,cid_id,deftaxcode))      
             con.commit()
             
             MessageBox.showinfo("Insert Status", "Inserted Successfully")
             
         # Get selected item to Edit
         D = tk.Toplevel(A)
-        mycanvas.bind('<Configure>', lambda e: mycanvas.configure(scrollregion=mycanvas.bbox('all')))
+        D.geometry('1500x1000')
+        mycanvas=tk.Canvas(D,width=1800,height=1200)
+        mycanvas.place(relx=0,rely=0,relwidth=1,relheight=1)
+        dashframe=tk.Frame(mycanvas)
+        dashframe['bg']='#2f516f'
+        mycanvas.create_window((0,0),window=dashframe,anchor='nw',width=1500,height=1000)
 
-        full_frame = Frame(mycanvas, width=2000, height=730, bg='#2f516a')
-        mycanvas.create_window((0, 0), window=full_frame, anchor="nw")
-
-        heading_frame = Frame(mycanvas)
-        mycanvas.create_window((0, 40), window=heading_frame, anchor="nw")
-        headingfont = font.Font(family='Times New Roman', size=25,)
-        credit_heading = Label(heading_frame, text="Account", fg='#fff',bg='#243e55', height=2, bd=5, relief="groove", font=headingfont, width=80)
-        credit_heading.pack(padx=0, pady=0)
-        hd1 = tk.Frame(mycanvas,width=900,height=650)
-        hd1['bg'] = '#243e54'
-        hd1.place(relx=0.1, rely=0.2)
+        headdash=tk.Frame(dashframe,bg='#243e54')
+        tk.Label(headdash,text='ACCOUNT',font=('Times New Roman',30),bg='#243e54').place(relx=0.4,rely=0.1)
+        headdash.place(relx=0.1,rely=0.03,relwidth=0.8,relheight=0.1)
+        hd1 = tk.Frame(dashframe,bg='#243e54')
             # form fields
         sub_headingfont = font.Font(family='Times New Roman', size=20,)
       
@@ -1118,7 +942,6 @@ def add_account():
         name_inp = StringVar()
         name_inp = Entry(hd1, width=25, bg='#2f516f', fg='#fff')
         name_inp.place(relx=0.5, rely=0.10, relwidth=0.4, relheight=0.065)
-        wrappen.pack(fill='both', expand='yes',)
 
         # cur.execute('SELECT Itemname from itemstable')
         # item_data=cur.fetchall()
@@ -1127,7 +950,6 @@ def add_account():
         detype_inp = StringVar()
         detype_inp = Entry(hd1, width=55, bg='#2f516f', fg='#fff')
         detype_inp.place(relx=0.04, rely=0.25, relwidth=0.4, relheight=0.065)
-        wrappen.pack(fill='both', expand='yes',)
         # StringVar()
         # l =ttk.Combobox(hd1,textvariable = detype_inp)
         # itemvalue=[]
@@ -1141,7 +963,6 @@ def add_account():
         description_inp = StringVar()
         description_inp = Entry(hd1, width=55, bg='#2f516f', fg='#fff')
         description_inp.place(relx=0.5, rely=0.25, relwidth=0.4, relheight=0.065)
-        wrappen.pack(fill='both', expand='yes',)
         
         cb = Entry(hd1,text="Deffered CGST",bg="#3E505C",fg="#fff")
         cb.insert(0, " Deffered CGST")
@@ -1156,7 +977,6 @@ def add_account():
                             '3.0% GST', '0.2% IGST', '5.0% GST', '6.0% GST', '0.2% GST', 'Exempt IGST', '3.0% IGST', '4.0% VAT', '5.0% IGST', '12.36% ST', '5.0% VAT', 'Exempt GST', '12.0% IGST', '2.0% CST']
         gst_inp = ttk.Combobox(hd1, values=defaulttaxcodeinput)
         gst_inp.place(relx=0.5, rely=0.55, relwidth=0.4, relheight=0.065)
-        wrappen.pack(fill='both', expand='yes',)
         
         # insdate = tk.Label(form_frame, text="Balance", bg='#243e55', fg='#fff')
         # insdate.place(x=600, y=100, height=15, width=150)
@@ -1180,22 +1000,22 @@ def add_account():
         balance_inp = StringVar()
         balance_inp = Entry(hd1, width=25, bg="#2f516f")
         balance_inp.place(relx=0.5, rely=0.70, relwidth=0.19, relheight=0.065)
-        wrappen.pack(fill='both', expand='yes',)
         
         date = dt.datetime.now()
+        tk.Label(hd1, text="as of", bg='#243e55', fg='#fff').place(relx=0.71,rely=0.65)
         formated_date = f"{date:%Y-%m-%d }"
         asof_input = StringVar()
         asof_inp = Entry(hd1, text=formated_date,textvariable=asof_input,bg="#3E505C",fg="#fff")
         asof_inp.insert(0,formated_date)
         asof_inp.place(relx=0.71, rely=0.70, relwidth=0.19 ,relheight=0.065)
-        wrappen.pack(fill='both', expand='yes',)
 
         
         # cancel_butt = tk.Button(hd1, text='Cancel', font=15, bg='#243e54',fg="#fff",command=cancel).place(relx=0.1, rely=0.8)
 
         
-        submit = tk.Button(hd1, text="Save", command=addit)
-        submit.place(relx=0.2, rely=0.8)
+        submit = tk.Button(hd1, text="Save", command=addit,font=(14),bg='#243e55')
+        submit.place(relx=0.5, rely=0.85,relwidth=0.15,relheight=0.1)
+        hd1.place(relx=0.1, rely=0.2,relheight=0.5,relwidth=0.8)
         
 
         D.mainloop()
