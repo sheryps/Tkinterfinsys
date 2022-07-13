@@ -62,6 +62,7 @@ def viewpricelist():
         global editpricewin,bm
         str = treevv.focus()
         values=treevv.item(str,'values')
+        print(values)
         b=[values[0]]
         cid=2
         cur.execute("SELECT * FROM pricelist WHERE priceid=%s",(b))

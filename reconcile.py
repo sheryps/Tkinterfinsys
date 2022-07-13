@@ -154,7 +154,7 @@ from tkinter import messagebox
 
 from tkinter import StringVar
 import mysql.connector
-mydata = mysql.connector.connect(host='localhost', user='root', password='', database='finsysinfox21', port='3307')
+mydata = mysql.connector.connect(host='localhost', user='root', password='', database='finsys_tkinter1', port='3306')
 
 
 cur = mydata.cursor()
@@ -189,10 +189,10 @@ def time():
                         einterest_input='0'
                         edate3=''
                         eincome_input=''
-                cur.execute("UPDATE app1_expenseaccount SET account =%s, begbal =%s, endbal =%s, enddate =%s, dat =%s, serchar =%s, expacc =%s where expenseid=%s",(eaccount, biginbal, endbal, edate1,edate2, eserviecechar, eexpacc,expexists[0]))
+                cur.execute("UPDATE expenseaccount SET account =%s, begbal =%s, endbal =%s, enddate =%s, dat =%s, serchar =%s, expacc =%s where expenseid=%s",(eaccount, biginbal, endbal, edate1,edate2, eserviecechar, eexpacc,expexists[0]))
                 mydata.commit()
                 
-                cur.execute("UPDATE app1_incomeaccount SET dat1 =%s, intear =%s, incacc =%s  where expenceincomeid_id=%s"
+                cur.execute("UPDATE incomeaccount SET dat1 =%s, intear =%s, incacc =%s  where expenceincomeid_id=%s"
                 ,(edate3, einterest_input, eincome_input,incomeacc[7]))
                 mydata.commit()
                 getdetails()
@@ -211,7 +211,7 @@ def time():
         size = (400, 500)
 
         uid=[4]
-        cur.execute("select cid from app1_company where id_id=%s",(uid))
+        cur.execute("select cid from company where id_id=%s",(uid))
         cmp=cur.fetchone()
     
 
@@ -231,7 +231,7 @@ def time():
 
 
         def comboinput1():
-            cur.execute("SELECT accountname FROM app1_accountype")
+            cur.execute("SELECT accountname FROM accountype")
             val = cur.fetchall()
             for row in val:
                 tm.append(row[0])
@@ -573,12 +573,12 @@ def time():
             Ddate3=''
             Iincome_account=''
         global expexists,incomeacc
-        cur.execute("select * from app1_expenseaccount where account=%s",(acc_list))
+        cur.execute("select * from expenseaccount where account=%s",(acc_list))
         expexists=cur.fetchone()
         print("expexistssssssssssssss",expexists)
         if expexists != None:
             exp_id=[expexists[0]]
-            cur.execute("select * from app1_incomeaccount where expenceincomeid_id=%s",(exp_id))
+            cur.execute("select * from incomeaccount where expenceincomeid_id=%s",(exp_id))
             incomeacc=cur.fetchone()
             print("slected data is ",incomeacc)
         # incomeacc
@@ -595,23 +595,23 @@ def time():
                         show_result()
 
         else:
-            cur.execute("select * from app1_accountype where accountname=%s and cid_id=%s",(Aaccount,cmp[0]))
+            cur.execute("select * from accountype where accountname=%s and cid_id=%s",(Aaccount,cmp[0]))
             account_data=cur.fetchone()
             print("account_data",account_data)
 
         
             #datas added to Expenseaccount
-            tg = '''INSERT INTO app1_expenseaccount (enddate,account,dat,begbal,endbal,serchar,expacc,cid_id,expaccountypid_id,type1,memo1) 
+            tg = '''INSERT INTO expenseaccount (enddate,account,dat,begbal,endbal,serchar,expacc,cid_id,expaccountypid_id,type1,memo1) 
             VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)'''
             val=(Ddate1, Aaccount, Ddate2, Bbeginning_balance, Eending_balance, Sservice_charge,Eexpense_account,cmp[0],account_data[0],"Journal","Service Charge")
             cur.execute(tg,val)
             mydata.commit()
-            cur.execute("select * from app1_expenseaccount where cid_id=%s",cmp)
+            cur.execute("select * from expenseaccount where cid_id=%s",cmp)
             expense_data=cur.fetchall()
             last_entry=expense_data[-1]
             print("last entry is ",last_entry)
             #datas added to income account
-            incomesql = '''INSERT INTO app1_incomeaccount (dat1,intear,incacc,cid_id,expenceincomeid_id,type2,memo2) 
+            incomesql = '''INSERT INTO incomeaccount (dat1,intear,incacc,cid_id,expenceincomeid_id,type2,memo2) 
             VALUES (%s,%s,%s,%s,%s,%s,%s)'''
             val2=(Ddate3, Iinterest_earned, Iincome_account,cmp[0],last_entry[0],"Deposit","Interest Earned")
             cur.execute(incomesql,val2)
@@ -634,7 +634,7 @@ def time():
     size = (400, 500)
 
     uid=[4]
-    cur.execute("select cid from app1_company where id_id=%s",(uid))
+    cur.execute("select cid from company where id=%s",(uid))
     cmp=cur.fetchone()
    
 
@@ -653,7 +653,7 @@ def time():
 
 
     def comboinput1():
-        cur.execute("SELECT accountname FROM app1_accountype")
+        cur.execute("SELECT accountname FROM accountype")
         val = cur.fetchall()
         for row in val:
             tm.append(row[0])
