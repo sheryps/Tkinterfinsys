@@ -137,7 +137,7 @@ def balancesheet():
     def allbalancevalues():        #current assets database values
         def currentassets():
             global x,tott1,tott2
-            current='Current Assets'
+            current='Current Assests'
             x=0.12   
             tott1=0.0
             try:
@@ -147,21 +147,22 @@ def balancesheet():
                         tk.Label(contframe,text=i[0],bg="#FFFFFF",font=('times new roman', 14)).place(relx=0.08,rely=x)
                         tk.Label(contframe,text = i[1],bg="#FFFFFF",font=('times new roman', 12)).place(relx=0.86,rely=x)
                         x=x+0.04
-                        tott1=tott1+i[1]
+                        tott1=tott1+float(i[1])
             except:
-                pass            
+                pass      
+            try:      
 
-            try:
                 tott2=0.0
                 cursor.execute("SELECT name,balance FROM accounts WHERE acctype =%s and cid =%s",([current,cid]))
                 val=cursor.fetchall()
                 for i in val:
-                    tk.Label(contframe,text=i[0],bg="#FFFFFF",font=('times new roman', 14)).place(relx=0.08,rely=x)
-                    tk.Label(contframe,text = i[1],bg="#FFFFFF",font=('times new roman', 12)).place(relx=0.86,rely=x)
-                    x=x+0.04
-                    tott2=tott2+i[1]
-            except:  
-                pass
+                        tk.Label(contframe,text=i[0],bg="#FFFFFF",font=('times new roman', 14)).place(relx=0.08,rely=x)
+                        tk.Label(contframe,text = i[1],bg="#FFFFFF",font=('times new roman', 12)).place(relx=0.86,rely=x)
+                        tott2=tott2+float(i[1])
+                        x=x+0.04
+            except:
+                pass           
+            
             tk.Label(contframe,text = "Bank",bg="#FFFFFF",font=('times new roman', 14)).place(relx=0.08,rely=x)
         currentassets()    
         tk.Label(contframe,text = " Account Receivable(Debtors)",bg="#FFFFFF",font=('times new roman', 14)).place(relx=0.08,rely=x+0.04)
