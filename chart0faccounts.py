@@ -115,7 +115,7 @@ def main():
         strr = treevv.focus()
         valuess=treevv.item(strr,'values')
         nem=valuess[1]
-        nemm=[valuess[0]]
+        nemm=valuess[0]
         prlframe=Toplevel(A)
         prlframe.title(f'{nem}'+' Report')
         prlframe.geometry('2000x2000')
@@ -247,19 +247,176 @@ def main():
         treevvv.place(relx=0,rely=0,relwidth=1)        
         tableframe.place(relx=0.1,rely=0.19,relwidth=0.8,relheight=0.7)
         def coaalldates():
+            oplist=['Input CGST', 'Input SGST','Input IGST']
+            oplist2=['Output IGST','Output SGST','Output CGST'] 
             nm=valuess[2]
             cid=2
-            tran='Payment'
-            no='1001'
-            cur.execute("SELECT paymdate,customer,acctype,amtapply FROM payment WHERE acctype=%s and cid=%s",(nm,cid))
-            vall=cur.fetchall()
-            for i in vall:
-                treevvv.insert('', 'end', values=(i[0],tran,no, i[1], i[2], '0', i[3]))
-            trann='Invoice'
-            cur.execute("SELECT invoicedate,customername,grandtotal,invoiceno FROM invoice WHERE cid=%s",([cid]))
-            valll=cur.fetchall()
-            for i in valll:
-                treevvv.insert('', 'end', values=(i[0],trann,i[3], i[1], nm, '0', i[2]))
+            cur.execute("SELECT name FROM accounts1 WHERE accounts1id=%s and cid=%s",(nemm,cid))
+            val=cur.fetchone()
+            if val[0] == 'Account Receivable(Debtors)':
+                tran='Payment'
+                no='1001'
+                cur.execute("SELECT paymdate,customer,amtapply FROM payment WHERE cid=%s",([cid]))
+                vall=cur.fetchall()
+                for i in vall:
+                    treevvv.insert('', 'end', values=(i[0],tran,no, i[1], nm, '0', i[2]))
+                trann='Invoice'
+                cur.execute("SELECT invoicedate,customername,grandtotal,invoiceno FROM invoice WHERE cid=%s",([cid]))
+                valll=cur.fetchall()
+                for i in valll:
+                    treevvv.insert('', 'end', values=(i[0],trann,i[3], i[1], nm, '0', i[2]))
+                tran1='Credit Note' 
+                cur.execute("SELECT creditdate,customer,grndtot,creditno FROM credit WHERE cid=%s",([cid]))   
+                valll1=cur.fetchall()
+                for i in valll1:
+                    treevvv.insert('', 'end', values=(i[0],tran1,i[3], i[1], nm, '0', i[2]))
+                tran2='Sales Receipt' 
+                cur.execute("SELECT saledate,salename,salegrandtotal,saleno FROM salesrecpts WHERE cid=%s",([cid]))   
+                valll2=cur.fetchall()
+                for i in valll1:
+                    treevvv.insert('', 'end', values=(i[0],tran2,i[3], i[1], nm, '0', i[2]))      
+            elif val[0] == 'Accounts Payable(Creditors)':
+                ty='openbalance'
+                cur.execute("select paymdate,payee,grandtotal,billno from bills where cid=%s and payornot=%s",(cid,ty))
+                bill=cur.fetchall()
+                trans3='payment' 
+                for i in bill:
+                    treevvv.insert('', 'end', values=(i[0],trans3,i[3], i[1], nm, '0', i[2]))      
+                ty=''
+                cur.execute("select paymdate,payee,grandtotal,billno from bills where cid=%s and payornot=%s",(cid,ty))
+                bill2=cur.fetchall()
+                for i in bill2:
+                    treevvv.insert('', 'end', values=(i[0],trans3,i[3], i[1], nm, '0', i[2]))   
+                ty='debit'
+                cur.execute("select paymdate,payee,grandtotal,billno from bills where cid=%s and payornot=%s",(cid,ty))
+                bill3=cur.fetchall()
+                bil='Bill'
+                for i in bill3:
+                    treevvv.insert('', 'end', values=(i[0],bil,i[3], i[1], nm, '0', i[2]))  
+                cur.execute("SELECT paymdate,supplier,grandtotal,refno FROM suplrcredit WHERE cid=%s",([cid]))    
+                debitt='Payment'
+                deb=cur.fetchall()
+                for i in deb:
+                    treevvv.insert('', 'end', values=(i[0],debitt,i[3], i[1], nm, '0', i[2]))    
+                cur.execute("SELECT paymdate,payee,grandtotal,refno FROM expenses WHERE cid=%s",([cid]))    
+                ex='Expence'
+                exp=cur.fetchall()
+                for i in exp:
+                    treevvv.insert('', 'end', values=(i[0],ex,i[3], i[1], nm, '0', i[2]))      
+                # cur.execute("select * from suplrcredit where  cid=%s",(cmp1))
+                # debit=cur.fetchall()
+                # cur.execute("select * from expences where  cid=%s",(cmp1))
+                # expence=cur.fetchall()
+                # trans='payment'    
+            elif val[0] in oplist:
+                        global supp
+                        cur.execute("select * from company where  cid=%s",(cmp1))
+                        cmp=cur.fetchone()
+                        cur.execute("select * from suplrcredit where  cid_id=%s",(cmp1))
+                        deb=cur.fetchall()
+                        debit = []
+                        accname=val[0]
+                        for i in deb:
+                            name = i[1]
+                            x = name.split()
+                            if len(x) == 3:
+                                firstname = x[0]
+                                lastname = x[1] + ' ' + x[2]
+                                cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(firstname,lastname,cmp1[0]))
+                                supp=cur.fetchone()
+                            else:
+                                cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(x[0],x[1],cmp1[0]))
+                                supp=cur.fetchone()
+
+                            if supp[21]==cmp[4]:
+                                debit.append(
+                                    [i[3], i[4], i[1], float(i[54]) / 2])
+                                
+                        cur.execute("select * from expences where  cid_id=%s",(cmp1))
+                        expen=cur.fetchall()
+                        expence = []
+                        for i in expen:
+                            name = i[1]
+                            x = name.split()
+                            if len(x) == 3:
+                                firstname = x[0]
+                                lastname = x[1] + ' ' + x[2]
+                                cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(firstname,lastname,cmp1[0]))
+                                supp=cur.fetchone()
+                            else:
+                                cur.execute("select * from supplier where firstname=%s and lastname=%s and cid_id=%s",(x[0],x[1],cmp1[0]))
+                                supp=cur.fetchone()
+                            if supp[21]==cmp[4]:
+                                expence.append([i[2], i[4], (i[1]).replace(
+                                    u'\xa0', u''), float(i[55]) / 2])
+                        trans='Expence'    
+                        try:
+                            for i in expence:
+                                
+                                treevvv.insert('', 'end',values=(i[0],trans,i[1],i[2],accname,0,i[3]))
+                        except:
+                            pass 
+                            
+                        trans='Debit Note'   
+                        try:
+                            for i in debit:
+                                
+                                treevvv.insert('', 'end',values=(i[0],trans,i[1],i[2],accname,0,i[3]))
+                        except:
+                            pass 
+
+
+            elif val[0] in oplist2:
+                        cur.execute("select * from invoice where cid_id=%s ",(cmp1))
+                        invoi=cur.fetchall()
+                        cur.execute("select * from company where  cid=%s",(cmp1))
+                        cmp=cur.fetchone()
+                        accname=val[0]
+                        invoic = []
+                        for i in invoi:
+                            if i[8] == cmp[4]:
+                                invoic.append(
+                                    [i[5], i[3], (i[1]).replace(u'\xa0', u''), float(i[40]) / 2])
+                    
+                        cur.execute("select * from credit where cid_id=%s ",(cmp1))
+                        creditnot=cur.fetchall()
+                        creditnote = []
+                        for i in creditnot:
+                            if i[6] == cmp[4]:
+                                creditnote.append(
+                                    [i[4], i[5], (i[1]).replace(u'\xa0', u''), float(i[17]) / 2])
+                        # salesrcpt = salesrecpts.objects.filter(cid=cmp1)
+                        cur.execute("select * from salesrecpts where cid_id=%s ",(cmp1))
+                        salesrcpt=cur.fetchall()
+                        salesrecipt = []
+                        for i in salesrcpt:
+                            if i[6] ==cmp[4]:
+                                salesrecipt.append(
+                                    [i[4], i[5], (i[1]).replace(u'\xa0', u''), float(i[18]) / 2])
+                        trans='Expence'    
+                        try:
+                            for i in invoic:
+                                
+                                treevvv.insert('', 'end',values=(i[0],trans,i[1],i[2],accname,0,i[3]))
+                        except:
+                            pass 
+                            
+                        trans='Debit Note'   
+                        try:
+                            for i in creditnote:
+                                
+                                treevvv.insert('', 'end',values=(i[0],trans,i[1],i[2],accname,0,i[3]))
+                        except:
+                            pass    
+
+                        trans='Debit Note'   
+                        try:
+                            for i in salesrecipt:
+                                
+                                treevvv.insert('', 'end',values=(i[0],trans,i[1],i[2],accname,0,i[3]))
+                        except:
+                            pass     
+
         coaalldates()    
         
     def view():
