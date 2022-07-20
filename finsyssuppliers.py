@@ -115,8 +115,7 @@ def sherryplus():
     frame2.place(relx=0.1,rely=0.2,relwidth=0.8,relheight=0.6)
     C.mainloop()
 def addsuppliers():
-    def enter():
- 
+    def enter(): 
         title=cmb.get()
         fname=efname.get()
         lname=elname.get()
